@@ -5,6 +5,7 @@ import { merge } from 'lodash';
 export const initialState: CreaturesState = [];
 
 export function creaturesReducer(state: CreaturesState = initialState, action: CreaturesActions.Action): CreaturesState {
+  if (!action) { return state || initialState; }
   switch (action.type) {
     case CreaturesActions.ADD_CREATURE: {
       // TODO: Implement.

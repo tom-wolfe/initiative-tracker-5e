@@ -1,0 +1,30 @@
+{
+  "short_name": "Initiative Tracker",
+  "name": "Initiative",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#375a7f",
+  "theme_color": "#375a7f",
+  "icons": [
+    { "src": "assets/icons/Icon-App-20x20@1x.png", "type": "image/png", "sizes": "20x20" },
+    { "src": "assets/icons/Icon-App-29x29@1x.png", "type": "image/png", "sizes": "29x29" },
+    { "src": "assets/icons/Icon-App-20x20@2x.png", "type": "image/png", "sizes": "40x40" },
+    { "src": "assets/icons/Icon-App-50x50@1x.png", "type": "image/png", "sizes": "50x50" },
+    { "src": "assets/icons/Icon-App-57x57@1x.png", "type": "image/png", "sizes": "57x57" },
+    { "src": "assets/icons/Icon-App-29x29@2x.png", "type": "image/png", "sizes": "58x58" },
+    { "src": "assets/icons/Icon-App-60x60@1x.png", "type": "image/png", "sizes": "60x60" },
+    { "src": "assets/icons/Icon-App-72x72@1x.png", "type": "image/png", "sizes": "72x72" },
+    { "src": "assets/icons/Icon-App-76x76@1x.png", "type": "image/png", "sizes": "76x76" },
+    { "src": "assets/icons/Icon-App-40x40@2x.png", "type": "image/png", "sizes": "80x80" },
+    { "src": "assets/icons/Icon-App-50x50@2x.png", "type": "image/png", "sizes": "100x100" },
+    { "src": "assets/icons/Icon-App-57x57@2x.png", "type": "image/png", "sizes": "114x114" },
+    { "src": "assets/icons/Icon-App-60x60@2x.png", "type": "image/png", "sizes": "120x120" },
+    { "src": "assets/icons/Icon-App-72x72@2x.png", "type": "image/png", "sizes": "144x144" },
+    { "src": "assets/icons/Icon-App-76x76@2x.png", "type": "image/png", "sizes": "152x152" },
+    { "src": "assets/icons/Icon-App-83.5x83.5@2x.png", "type": "image/png", "sizes": "167x167" },
+    { "src": "assets/icons/Icon-App-60x60@3x.png", "type": "image/png", "sizes": "180x180" },
+    { "src": "assets/icons/Icon-App-76x76@3x.png", "type": "image/png", "sizes": "228x228" },
+    { "src": "assets/icons/favicon.png", "type": "image/png", "sizes": "256x256" }
+  ],
+  "start_url": "index.html"
+}

@@ -1,0 +1,236 @@
+// Darkly 4.0.0
+// Bootswatch
+
+
+// Variables ===================================================================
+
+$web-font-path: "https://fonts.googleapis.com/css?family=Lato:400,700,400italic" !default;
+@import url($web-font-path);
+
+// Body ========================================================================
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: grid;
+  min-height: 100%;
+}
+
+.global-wrapper {
+  background: $gray-900;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+// Navbar ======================================================================
+
+.bg-dark {
+  background-color: $success !important;
+}
+
+.navbar {
+  padding: 0.5rem 1rem !important;
+}
+
+// Buttons =====================================================================
+
+.btn-primary:not([disabled]):not(.disabled):active,
+.btn-primary:not([disabled]):not(.disabled).active,
+.btn-primary:focus, .btn-primary.focus,
+.show > .btn-primary.dropdown-toggle,
+.btn-secondary:not([disabled]):not(.disabled):active,
+.btn-secondary:not([disabled]):not(.disabled).active,
+.btn-secondary:focus, .btn-secondary.focus,
+.show > .btn-secondary.dropdown-toggle,
+.btn-success:not([disabled]):not(.disabled):active,
+.btn-success:not([disabled]):not(.disabled).active,
+.btn-success:focus, .btn-success.focus,
+.show > .btn-success.dropdown-toggle,
+.btn-danger:not([disabled]):not(.disabled):active,
+.btn-danger:not([disabled]):not(.disabled).active,
+.btn-danger:focus, .btn-danger.focus,
+.show > .btn-danger.dropdown-toggle
+.btn-info:not([disabled]):not(.disabled):active,
+.btn-info:not([disabled]):not(.disabled).active,
+.btn-info:focus, .btn-info.focus,
+.show > .btn-info.dropdown-toggle {
+  box-shadow: none !important;
+}
+
+// Typography ==================================================================
+
+.blockquote {
+  &-footer {
+    color: $gray-600;
+  }
+}
+
+// Tables ======================================================================
+
+.table {
+  &-success,
+  &-info,
+  &-warning,
+  &-danger {
+    color: #fff;
+  }
+}
+
+.table {
+
+  .thead-dark th {
+    color: $white;
+  }
+
+  &-success {
+    &, > th, > td {
+      background-color: $success;
+    }
+  }
+
+  &-info {
+    &, > th, > td {
+      background-color: $info;
+    }
+  }
+
+  &-danger {
+    &, > th, > td {
+      background-color: $danger;
+    }
+  }
+
+  &-warning {
+    &, > th, > td {
+      background-color: $warning;
+    }
+  }
+
+  &-hover {
+
+    .table-success:hover {
+      &, > th, > td {
+        background-color: darken($success, 5%);
+      }
+    }
+
+    .table-info:hover {
+      &, > th, > td {
+        background-color: darken($info, 5%);
+      }
+    }
+
+    .table-danger:hover {
+      &, > th, > td {
+        background-color: darken($danger, 5%);
+      }
+    }
+
+    .table-warning:hover {
+      &, > th, > td {
+        background-color: darken($warning, 5%);
+      }
+    }
+
+  }
+}
+
+// Forms =======================================================================
+
+.input-group-addon {
+  color: #fff;
+}
+
+// Navs ========================================================================
+
+.nav-tabs,
+.nav-pills {
+
+  .nav-link,
+  .nav-link.active,
+  .nav-link.active:focus,
+  .nav-link.active:hover, 
+  .nav-item.open .nav-link,
+  .nav-item.open .nav-link:focus,
+  .nav-item.open .nav-link:hover {
+    color: #fff;
+  }
+}
+
+.breadcrumb a {
+  color: #fff;
+}
+
+.pagination {
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+// Indicators ==================================================================
+
+.close {
+  opacity: 0.4;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+}
+
+.alert {
+  border: none;
+  color: $white;
+
+  a,
+  .alert-link {
+    color: #fff;
+    text-decoration: underline;
+  }
+
+  &-primary {
+    background-color: $primary;
+  }
+
+  &-success {
+    background-color: $success;
+  }
+
+  &-danger {
+    background-color: $danger;
+  }
+
+  &-warning {
+    background-color: $warning;
+  }
+
+  &-info {
+    background-color: $info;
+  }
+
+  &-dark {
+    background-color: $dark;
+  }
+}
+
+// Progress bars ===============================================================
+
+// Containers ==================================================================
+
+
+.list-group-item-action {
+  color: #fff;
+
+  &:hover,
+  &:focus {
+    background-color: $gray-700;
+    color: #fff;
+  }
+
+  .list-group-item-heading {
+    color: #fff;
+  }
+}

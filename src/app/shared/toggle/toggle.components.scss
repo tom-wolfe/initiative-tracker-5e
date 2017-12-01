@@ -1,0 +1,64 @@
+@import '~styles/_variables.scss';
+
+@mixin size($width, $height) {
+  .switch {
+    width: $width;
+    height: $height;
+    border-radius: $height;
+    .toggle-switch {
+      width: $height;
+      height: $height;
+    }
+  }
+  .switch.on .toggle-switch {
+    margin-left: calc(100% - #{$height});
+  }
+}
+
+.toggle.toggle-small { @include size(30px, 18px); }
+.toggle.toggle-medium { @include size(40px, 24px); }
+.toggle.toggle-large { @include size(50px, 30px); }
+
+.toggle.disabled {
+  cursor: not-allowed;
+  .switch {
+    background: $gray-200;
+    border: 1px solid $gray-200;
+    box-shadow: $gray-300 0 0 0 0 inset;
+    .toggle-switch {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+.switch, .toggle-switch {
+  transition: 0.2s ease-out all;
+}
+
+.toggle {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  .switch {
+    background: $gray-300;
+    border: 1px solid $gray-300;
+    box-shadow: $gray-400 0 0 0 0 inset;
+    box-sizing: content-box;
+
+    .toggle-switch {
+      background-color: $white;
+      border-radius: 100%;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  .switch.on {
+    background: $success;
+    border: 1px solid $success;  
+  }
+  
+  .label {
+    margin-left: 8px;
+    flex-grow: 1;
+  }
+}

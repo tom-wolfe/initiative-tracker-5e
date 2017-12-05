@@ -21,7 +21,7 @@ describe('creaturesReducer', () => {
         reactionUsed: false,
       };
       const action = new Actions.AddCreature(creature);
-      const result = creaturesReducer(initialState, action);
+      const result = creaturesReducer([], action);
       expect(result.length).toBe(1);
       expect(result[0]).toBe(creature);
     });

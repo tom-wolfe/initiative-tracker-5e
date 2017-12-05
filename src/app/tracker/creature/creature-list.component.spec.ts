@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import * as Helpers from 'app/tracker/helpers';
-import { TrackerState } from 'app/tracker/store';
 
+import { CreaturesState } from '../store/creatures';
 import { CreatureListComponent } from './creature-list.component';
 import { CreatureComponent } from './creature.component';
 
@@ -9,17 +9,10 @@ describe('CreatureListComponent', () => {
   let component: CreatureListComponent;
   let fixture: ComponentFixture<CreatureListComponent>;
 
-  const startingState: TrackerState = {
-    creatures: [
-      Helpers.createCreature('Goblin'),
-      Helpers.createCreature('Orc'),
-    ],
-    encounter: {
-      initiative: 20,
-      round: 0,
-      secondsPassed: 0
-    }
-  };
+  const creatures: CreaturesState = [
+    Helpers.createCreature('Goblin'),
+    Helpers.createCreature('Orc'),
+  ];
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -31,13 +24,13 @@ describe('CreatureListComponent', () => {
 
   describe('Creatures', () => {
     it('should create a creature component for each creature in creatures.', () => {
-      component.creatures = startingState.creatures;
+      component.creatures = creatures;
       fixture.detectChanges();
       // Expect one creature component for each element in the array.
-      expect(component.creatureComponents.length).toBe(startingState.creatures.length);
+      expect(component.creatureComponents.length).toBe(creatures.length);
       // Expect each creature component to be bound to the parent creature.
       component.creatureComponents.forEach((creatureComponent, index) => {
-        expect(creatureComponent.creature).toBe(startingState.creatures[index]);
+        expect(creatureComponent.creature).toBe(creatures[index]);
       });
     });
   });

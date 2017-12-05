@@ -13,14 +13,16 @@ describe('TrackerComponent', () => {
   let fixture: ComponentFixture<TrackerComponent>;
 
   const startingState: TrackerState = {
-    creatures: [
-      Helpers.createCreature('Goblin'),
-      Helpers.createCreature('Orc'),
-    ],
-    encounter: {
-      initiative: 20,
-      round: 0,
-      secondsPassed: 0
+    tracker: {
+      creatures: [
+        Helpers.createCreature('Goblin'),
+        Helpers.createCreature('Orc'),
+      ],
+      encounter: {
+        initiative: 20,
+        round: 0,
+        secondsPassed: 0
+      }
     }
   };
 
@@ -39,7 +41,7 @@ describe('TrackerComponent', () => {
     it('should bind creatures from the store to the creature list.', () => {
       fixture.detectChanges();
       // Expect creatures to be taken from store.
-      expect(component.creatures).toBe(startingState.creatures);
+      expect(component.creatures).toBe(startingState.tracker.creatures);
       // Expect creatures to be passed on to creature list.
       expect(component.creatureList.creatures).toBe(component.creatures);
     });

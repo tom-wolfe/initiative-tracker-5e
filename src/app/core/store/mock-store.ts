@@ -8,7 +8,7 @@ export class MockStore<T> extends BehaviorSubject<T> {
     super(_initialState);
   }
 
-  dispatch = (action: Action): void => { }
+  dispatch = (action: Action): void => { };
 
   select = <X, R>(pathOrMapFn: any, ...paths: string[]): Observable<R> => {
     return map.call(this, pathOrMapFn);

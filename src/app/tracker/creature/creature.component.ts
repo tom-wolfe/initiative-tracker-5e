@@ -8,6 +8,7 @@ import { Creature } from 'app/tracker/models';
 })
 export class CreatureComponent {
   @Input() creature: Creature;
+  @Input() active: Boolean;
 
   constructor() { }
 }

@@ -1,6 +1,6 @@
 import { Component, Input, ViewChildren } from '@angular/core';
-
 import { CreaturesState } from 'app/tracker/store/creatures';
+
 import { CreatureComponent } from './creature.component';
 
 @Component({

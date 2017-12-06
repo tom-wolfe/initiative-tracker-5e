@@ -1,5 +1,29 @@
+@import '~styles/_variables.scss';
+
+$row-size: 48px;
+
 .creature {
   display: flex;
   flex-direction: row;
+  height: $row-size;
   width: 100%;
+
+  border-bottom: 1px solid $primary;
+
+  .initiative-block, .hp-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .initiative-block {
+    width: $row-size;
+    color: $primary;
+
+    font-size: 1.2em;
+  }
+
+  .name-block {
+    flex-grow: 1;
+  }
 }

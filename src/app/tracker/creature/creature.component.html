@@ -1,5 +1,11 @@
 <div class="creature">
-  <div class="name">{{creature.name}}</div>
-  <div class="initiative">{{creature.initiative}}</div>
-  <div class="hp">{{creature.hp}}/{{creature.maxHp}}</div>
+  <div class="initiative-block">
+    <div class="initiative">{{creature.initiative}}</div>
+  </div>
+  <div class="name-block">
+    <div class="name">{{creature.name}}</div>
+  </div>
+  <div class="hp-block">
+    <span class="hp">{{creature.hp}}</span>/<span class="max">{{creature.maxHp}}</span>
+  </div>
 </div>

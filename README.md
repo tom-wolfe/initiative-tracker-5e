@@ -1,6 +1,6 @@
 # Initiative Tracker 5E
 
-[![Build Status](https://travis-ci.org/trwolfe13/initiative-tracker-5e.svg?branch=master)](https://travis-ci.org/trwolfe13/initiative-tracker-5e) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/499a603e0dae48d4817e0c7418b7756b)](https://www.codacy.com/app/trwolfe13/initiative-tracker-5e?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=trwolfe13/initiative-tracker-5e&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/trwolfe13/initiative-tracker-5e.svg?branch=master)](https://travis-ci.org/trwolfe13/initiative-tracker-5e) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/499a603e0dae48d4817e0c7418b7756b)](https://www.codacy.com/app/trwolfe13/initiative-tracker-5e?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=trwolfe13/initiative-tracker-5e&amp;utm_campaign=Badge_Grade) [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/499a603e0dae48d4817e0c7418b7756b)](https://www.codacy.com/app/trwolfe13/initiative-tracker-5e?utm_source=github.com&utm_medium=referral&utm_content=trwolfe13/initiative-tracker-5e&utm_campaign=Badge_Coverage)
 
 Initiative Tracker 5E is a D&D 5e player tool to allow DMs to track creature initiative, HP and concentration in combat.
 

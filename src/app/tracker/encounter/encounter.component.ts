@@ -5,7 +5,8 @@ import { EncounterState } from '../store/encounter';
 
 @Component({
   selector: 'app-encounter',
-  templateUrl: './encounter.component.html'
+  templateUrl: './encounter.component.html',
+  styleUrls: ['./encounter.component.scss']
 })
 export class EncounterComponent {
   @Input() encounter: EncounterState;

@@ -1,0 +1,19 @@
+@import '~styles/_variables.scss';
+
+.encounter {
+  display: flex;
+  flex-direction: row;
+  width: 500px;
+  
+  border-bottom: 4px solid $primary;
+  margin: 8px;
+  padding: 8px;  
+
+  .block {
+    width: calc(100% / 3);
+    text-align: center;
+    h3 {
+      font-size: 1em;
+    }
+  }
+}

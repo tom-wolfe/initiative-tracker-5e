@@ -37,13 +37,13 @@ describe('CreatureListComponent', () => {
     it('should display a no creatures message on null.', () => {
       component.creatures = null;
       fixture.detectChanges();
-      const noCreatures = fixture.debugElement.queryAll(By.css('.no-creatures'))
+      const noCreatures = fixture.debugElement.queryAll(By.css('.no-creatures'));
       expect(noCreatures.length).toBe(1);
     });
     it('should display a no creatures message on empty array.', () => {
       component.creatures = [];
       fixture.detectChanges();
-      const noCreatures = fixture.debugElement.queryAll(By.css('.no-creatures'))
+      const noCreatures = fixture.debugElement.queryAll(By.css('.no-creatures'));
       expect(noCreatures.length).toBe(1);
     });
   });

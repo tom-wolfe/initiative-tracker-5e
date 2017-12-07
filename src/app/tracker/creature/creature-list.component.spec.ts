@@ -1,8 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { Store } from '@ngrx/store';
 import * as Helpers from 'app/tracker/helpers';
+import { Creature } from 'app/tracker/models';
 
-import { CreaturesState } from '../store/creatures';
+import { TrackerState } from '../store';
 import { CreatureListComponent } from './creature-list.component';
 import { CreatureComponent } from './creature.component';
 
@@ -10,7 +12,7 @@ describe('CreatureListComponent', () => {
   let component: CreatureListComponent;
   let fixture: ComponentFixture<CreatureListComponent>;
 
-  const creatures: CreaturesState = [
+  const creatures: Creature[] = [
     Helpers.createCreature('Goblin'),
     Helpers.createCreature('Orc'),
   ];
@@ -18,6 +20,9 @@ describe('CreatureListComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [CreatureListComponent, CreatureComponent],
+      providers: [
+        { provide: Store, useValue: new Helpers.MockStore<TrackerState>(Helpers.startingState) }
+      ]
     });
     fixture = TestBed.createComponent(CreatureListComponent);
     component = fixture.componentInstance;

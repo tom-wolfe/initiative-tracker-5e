@@ -1,5 +1,4 @@
-import { NgCliWebpackConfig } from '@angular/cli/models/webpack-config';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-modal-close-footer',

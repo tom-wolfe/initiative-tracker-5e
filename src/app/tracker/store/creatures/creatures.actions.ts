@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Creature } from '../../models';
+import { Creature } from 'app/tracker/models';
 
 export const ADD_CREATURE = '[Creatures] Add Creature';
 export const REMOVE_CREATURE = '[Creatures] Remove Creature';

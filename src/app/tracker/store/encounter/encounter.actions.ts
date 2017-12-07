@@ -1,5 +1,4 @@
 import { Action } from '@ngrx/store';
-import { Creature } from '../../models';
 
 export const RESET = '[Encounter] Reset';
 export const NEXT_INITIATIVE = '[Encounter] Next Initiative';

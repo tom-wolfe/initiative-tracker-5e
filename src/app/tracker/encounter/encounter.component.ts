@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
-import * as Time from 'app/utils/time';
+import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 
-import { EncounterState } from '../store/encounter';
+import { Encounter } from '../models';
+import { Selectors, TrackerState } from '../store';
 
 @Component({
   selector: 'app-encounter',
@@ -9,11 +10,11 @@ import { EncounterState } from '../store/encounter';
   styleUrls: ['./encounter.component.scss']
 })
 export class EncounterComponent {
-  @Input() encounter: EncounterState;
+  encounter: Encounter;
+  timePassed: string;
 
-  get timePassed(): string {
-    return Time.secondsToTime(this.encounter.secondsPassed);
+  constructor(private store: Store<TrackerState>) {
+    this.store.select(Selectors.encounter).subscribe(e => this.encounter = e);
+    this.store.select(Selectors.timePassed).subscribe(t => this.timePassed = t);
   }
-
-  constructor() { }
 }

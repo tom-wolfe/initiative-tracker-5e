@@ -1,6 +1,8 @@
-import { Component, Input, ViewChildren } from '@angular/core';
-import { CreaturesState } from 'app/tracker/store/creatures';
+import { Component, ViewChildren } from '@angular/core';
+import { Store } from '@ngrx/store';
 
+import { Creature } from '../models';
+import { TrackerState, Selectors } from '../store';
 import { CreatureComponent } from './creature.component';
 
 @Component({
@@ -9,9 +11,11 @@ import { CreatureComponent } from './creature.component';
   styleUrls: ['./creature-list.component.scss']
 })
 export class CreatureListComponent {
-  @Input() creatures: CreaturesState;
+  creatures: Creature[];
 
   @ViewChildren('creature') creatureComponents: CreatureComponent[];
 
-  constructor() { }
+  constructor(private store: Store<TrackerState>) {
+    store.select(Selectors.creaturesInInitiativeOrder).subscribe(c => this.creatures = c);
+  }
 }

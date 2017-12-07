@@ -1,9 +1,9 @@
-import { CreaturesState } from './creatures';
-import { EncounterState } from './encounter';
+import { Creature, Encounter } from '../models';
 
 export interface TrackerState {
   tracker: {
-    creatures: CreaturesState;
-    encounter: EncounterState;
+    creatures: Creature[];
+    players: Creature[];
+    encounter: Encounter;
   };
 }

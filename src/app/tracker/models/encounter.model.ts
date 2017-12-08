@@ -1,5 +1,6 @@
+import { Creature } from './creature.model';
+
 export interface Encounter {
-  initiative: number;
-  round: number;
-  secondsPassed: number;
+  name: string;
+  creatures: Creature[];
 }

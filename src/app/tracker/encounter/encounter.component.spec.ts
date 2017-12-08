@@ -26,7 +26,7 @@ describe('EncounterComponent', () => {
 
   it('should bind to the state encounter.', () => {
     fixture.detectChanges();
-    expect(component.encounter).toBe(startingState.tracker.encounter);
+    expect(component.encounter).toBe(startingState.tracker.currentEncounter);
   });
 
   it('should display the current initiative.', () => {

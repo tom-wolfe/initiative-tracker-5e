@@ -7,7 +7,6 @@ export function createCreature(name: string): Creature {
     hp: 0,
     maxHp: 40,
     reactionUsed: false,
-    player: false,
     concentrating: false,
     initiative: 10,
     notes: '',

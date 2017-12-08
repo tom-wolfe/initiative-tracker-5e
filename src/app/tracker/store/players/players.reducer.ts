@@ -1,20 +1,20 @@
 import { createCreature } from 'app/tracker/helpers';
 import { Creature } from 'app/tracker/models';
 
-import * as CreaturesActions from './creatures.actions';
+import * as PlayersActions from './players.actions';
 
 export const initialState: Creature[] = [
-  createCreature('Goblin'),
-  createCreature('Orc'),
+  createCreature('Fred'),
+  createCreature('George'),
 ];
 
-export function creaturesReducer(state: Creature[] = initialState, action: CreaturesActions.Action): Creature[] {
+export function playersReducer(state: Creature[] = initialState, action: PlayersActions.Action): Creature[] {
   if (!action) { return state || initialState; }
   switch (action.type) {
-    case CreaturesActions.ADD_CREATURE: {
+    case PlayersActions.ADD_PLAYER: {
       return [...state, action.creature];
     }
-    case CreaturesActions.REMOVE_CREATURE: {
+    case PlayersActions.REMOVE_PLAYER: {
       return state.filter(c => c !== action.creature);
     }
     default: {

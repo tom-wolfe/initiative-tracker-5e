@@ -6,6 +6,5 @@ export interface Creature {
   maxHp: number;
   name: string;
   notes: string;
-  player: boolean;
   reactionUsed: boolean;
 }

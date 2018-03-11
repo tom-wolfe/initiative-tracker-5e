@@ -8,11 +8,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { CollapseDirective } from './collapse.directive';
-import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
-
-const COMPONENTS = [
-  SlideToggleComponent
-];
 
 const DIRECTIVES = [
   CollapseDirective
@@ -33,13 +28,11 @@ const MODULES = [
     ...MODULES
   ],
   declarations: [
-    ...DIRECTIVES,
-    ...COMPONENTS
+    ...DIRECTIVES
   ],
   exports: [
     ...MODULES,
-    ...DIRECTIVES,
-    ...COMPONENTS
+    ...DIRECTIVES
   ]
 })
 export class SharedModule { }

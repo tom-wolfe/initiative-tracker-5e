@@ -46,7 +46,7 @@
         <input type="text" class="form-control" id="hp" placeholder="HP" [(ngModel)]="newCreature.maximumHp" (keydown.enter)="onAddToInitiativeClick()">
       </div>
       <div class="col-sm-1 col-remove">
-        <a href="#" (click)="onAddToInitiativeClick($event)"><i class="mdi mdi-plus-circle"></i><label class="sr-only">Add to Initiative</label></a>
+        <button mat-raised-button color="primary" (click)="onAddToInitiativeClick($event)">Add Creature{{newCreatureCount === 1 ? '' : 's'}}</button>
       </div>
     </div>
   </div>

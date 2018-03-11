@@ -1,14 +1,14 @@
-import { AppPage } from './app.po';
+import { DndNpcGenPage } from './app.po';
 
-describe('Initiative Tracker App', () => {
-  let page: AppPage;
+describe('dnd-npc-gen App', () => {
+  let page: DndNpcGenPage;
 
   beforeEach(() => {
-    page = new AppPage();
+    page = new DndNpcGenPage();
   });
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(page.getParagraphText()).toEqual('Welcome to app!!');
   });
 });

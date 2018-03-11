@@ -9,7 +9,7 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "manifest.json"
+        "favicon.ico"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -19,8 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "../node_modules/font-awesome/css/font-awesome.css",
-        "styles/styles.scss"
+        "styles.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

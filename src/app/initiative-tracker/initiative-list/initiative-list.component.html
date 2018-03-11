@@ -12,9 +12,9 @@
     <div class="wrapper" *ngFor="let creature of sortedCreatures" [ngClass]="{disabled: !creature.active, active: currentInitiative === creature.initiative && creature.active}">
       <div class="row">
         <div class="col-sm-1 col-active">
-          <dnd-slide-toggle [(ngModel)]="creature.active">
+          <app-slide-toggle [(ngModel)]="creature.active">
             <span class="sr-only">Active?</span>
-          </dnd-slide-toggle>
+          </app-slide-toggle>
         </div>
         <div class="col-sm-6 col-name">{{creature.name}}</div>
         <div class="col-sm-2 col-initiative">{{creature.initiative}}</div>

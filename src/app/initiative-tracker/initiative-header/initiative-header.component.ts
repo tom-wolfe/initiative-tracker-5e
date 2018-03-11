@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'dnd-initiative-header',
+  selector: 'app-initiative-header',
   templateUrl: './initiative-header.component.html'
 })
 export class InitiativeHeaderComponent {

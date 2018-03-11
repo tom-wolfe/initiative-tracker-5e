@@ -12,7 +12,6 @@ import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
   imports: [
     CommonModule,
     FormsModule,
-    HttpModule,
     BrowserModule
   ],
   declarations: [
@@ -22,7 +21,6 @@ import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
   exports: [
     CommonModule,
     FormsModule,
-    HttpModule,
     BrowserModule,
     CollapseDirective,
     SlideToggleComponent

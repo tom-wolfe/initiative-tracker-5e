@@ -9,7 +9,7 @@ export const MD_SLIDE_TOGGLE_VALUE_ACCESSOR: any = {
 };
 
 @Component({
-  selector: 'dnd-slide-toggle',
+  selector: 'app-slide-toggle',
   templateUrl: './slide-toggle.component.html',
   styleUrls: ['./slide-toggle.component.scss'],
   providers: [MD_SLIDE_TOGGLE_VALUE_ACCESSOR],

@@ -5,7 +5,7 @@ import * as _ from 'lodash';
 import { CreatureInitiative } from '../models/creature-initiative';
 
 @Component({
-  selector: 'dnd-initiative-list',
+  selector: 'app-initiative-list',
   templateUrl: './initiative-list.component.html',
   styleUrls: ['./initiative-list.component.scss']
 })

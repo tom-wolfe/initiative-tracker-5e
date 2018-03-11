@@ -27,7 +27,7 @@ export class InitiativeTrackerComponent {
       this.currentInitiative = sortedCreatures[0].initiative;
       this.currentRound = 1;
     } else {
-      const nextCreatures = sortedCreatures.filter(c => c.initiative < this.currentInitiative && c.active);
+      const nextCreatures = sortedCreatures.filter(c => c.initiative < this.currentInitiative);
       if (nextCreatures.length > 0) {
         this.currentInitiative = nextCreatures[0].initiative;
       } else {

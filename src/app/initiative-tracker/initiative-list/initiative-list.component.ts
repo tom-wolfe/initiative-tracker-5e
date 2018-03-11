@@ -3,6 +3,7 @@ import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import * as _ from 'lodash';
 
 import { CreatureInitiative } from '../models/creature-initiative';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-initiative-list',
@@ -10,14 +11,15 @@ import { CreatureInitiative } from '../models/creature-initiative';
   styleUrls: ['./initiative-list.component.scss']
 })
 export class InitiativeListComponent {
+  displayedColumns = ['name', 'initiative', 'hp', 'remove'];
   @Input() creatures: CreatureInitiative[];
   @Input() currentInitiative: number;
   @ViewChild('count') countInput: ElementRef;
   newCreature: CreatureInitiative = new CreatureInitiative();
   newCreatureCount = 1;
 
-  get sortedCreatures(): CreatureInitiative[] {
-    return _.orderBy(this.creatures, ['initiative'], 'desc');
+  get dataSource(): MatTableDataSource<CreatureInitiative> {
+    return new MatTableDataSource(_.orderBy(this.creatures, ['initiative'], 'desc'));
   }
 
   onAddToInitiativeClick(e): void {

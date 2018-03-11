@@ -1,14 +1,2 @@
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1>Initiative Tracker</h1>
-    <div class="row">
-      <div class="col-12 text-right">
-        <button type="button" class="btn btn-primary btn-lg" (click)="onResetClick()">Reset Tracker</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container">
-  <app-initiative-header (nextClick)="onNextClick()" [currentInitiative]="currentInitiative" [currentRound]="currentRound"></app-initiative-header>
-  <app-initiative-list [creatures]="creatures" [currentInitiative]="currentInitiative"></app-initiative-list>
-</div>
+<app-initiative-header (nextClick)="onNextClick()" [currentInitiative]="currentInitiative" [currentRound]="currentRound"></app-initiative-header>
+<app-initiative-list [creatures]="creatures" [currentInitiative]="currentInitiative"></app-initiative-list>

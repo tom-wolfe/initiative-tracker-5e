@@ -6,16 +6,20 @@ import { SharedModule } from '../shared/shared.module';
 
 import { throwIfAlreadyLoaded } from './module-import-guard';
 
+const COMPONENTS = [
+    NavbarComponent
+];
+
 @NgModule({
     imports: [
         SharedModule,
         RouterModule.forRoot([])
     ],
     declarations: [
-        NavbarComponent,
+        ...COMPONENTS,
     ],
     exports: [
-        NavbarComponent,
+        ...COMPONENTS,
         RouterModule
     ]
 })

@@ -2,7 +2,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-initiative-header',
-  templateUrl: './initiative-header.component.html'
+  templateUrl: './initiative-header.component.html',
+  styleUrls: ['./initiative-header.component.scss']
 })
 export class InitiativeHeaderComponent {
   @Input() currentInitiative: number;

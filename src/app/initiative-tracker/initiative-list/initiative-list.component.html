@@ -23,17 +23,17 @@
 <mat-card>
   <mat-card-content>
     <mat-form-field>
-      <input matInput type="number" placeholder="Count (#)" [(ngModel)]="newCreatureCount" (keydown.enter)="onAddToInitiativeClick()"
+      <input matInput type="number" placeholder="Count (#)" [(ngModel)]="newCreatureCount" (keydown.enter)="onAddToInitiativeClick($event)"
         #count>
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="text" placeholder="Creature Name" [(ngModel)]="newCreature.name" (keydown.enter)="onAddToInitiativeClick()">
+      <input matInput type="text" placeholder="Creature Name" [(ngModel)]="newCreature.name" (keydown.enter)="onAddToInitiativeClick($event)">
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="text" placeholder="Initiative" [(ngModel)]="newCreature.initiative" (keydown.enter)="onAddToInitiativeClick()">
+      <input matInput type="text" placeholder="Initiative" [(ngModel)]="newCreature.initiative" (keydown.enter)="onAddToInitiativeClick($event)">
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="text" placeholder="HP" [(ngModel)]="newCreature.maximumHp" (keydown.enter)="onAddToInitiativeClick()">
+      <input matInput type="text" placeholder="HP" [(ngModel)]="newCreature.maximumHp" (keydown.enter)="onAddToInitiativeClick($event)">
     </mat-form-field>
   </mat-card-content>
   <mat-card-actions>

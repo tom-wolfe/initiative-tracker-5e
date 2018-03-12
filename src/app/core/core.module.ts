@@ -1,10 +1,11 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
-import { RouterModule, Route } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { NavbarComponent } from './navbar/navbar.component';
 import { SharedModule } from '../shared/shared.module';
-
 import { throwIfAlreadyLoaded } from './module-import-guard';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const COMPONENTS = [
     NavbarComponent
@@ -13,7 +14,9 @@ const COMPONENTS = [
 @NgModule({
     imports: [
         SharedModule,
-        RouterModule.forRoot([])
+        RouterModule.forRoot([]),
+        StoreModule.forRoot({ }),
+        StoreDevtoolsModule.instrument({ maxAge: 5 }),
     ],
     declarations: [
         ...COMPONENTS,

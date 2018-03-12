@@ -1,39 +1,23 @@
 import { Component } from '@angular/core';
-
-import * as _ from 'lodash';
+import { Store } from '@ngrx/store';
 
 import { CreatureInitiative } from './models/creature-initiative';
+import { TrackerState } from './state';
+import { NextInitiative, ResetInitiative } from './state/encounter';
 
 @Component({
   selector: 'app-initiative-tracker',
   templateUrl: './initiative-tracker.component.html'
 })
 export class InitiativeTrackerComponent {
-  creatures: CreatureInitiative[] = [];
-  currentInitiative: number;
-  currentRound = 0;
+  creatures: CreatureInitiative[];
+  initiative: number;
+  round: number;
 
-  onResetClick() {
-    while (this.creatures.length > 0) {
-      this.creatures.pop();
-    }
-    this.currentInitiative = undefined;
-    this.currentRound = 0;
-  }
-
-  onNextClick() {
-    const sortedCreatures = _.orderBy(this.creatures, 'initiative', 'desc');
-    if (!this.currentInitiative) {
-      this.currentInitiative = sortedCreatures[0].initiative;
-      this.currentRound = 1;
-    } else {
-      const nextCreatures = sortedCreatures.filter(c => c.initiative < this.currentInitiative);
-      if (nextCreatures.length > 0) {
-        this.currentInitiative = nextCreatures[0].initiative;
-      } else {
-        this.currentInitiative = sortedCreatures[0].initiative;
-        this.currentRound++;
-      }
-    }
+  constructor(private store: Store<TrackerState>) {
+    const encounter = this.store.select(s => s.encounter);
+    encounter.select(e => e.round).subscribe(r => this.round = r);
+    encounter.select(e => e.initiative).subscribe(i => this.initiative = i);
+    encounter.select(e => e.creatures).subscribe(c => this.creatures = c);
   }
 }

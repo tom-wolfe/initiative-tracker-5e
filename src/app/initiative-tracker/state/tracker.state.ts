@@ -1,7 +1,5 @@
-import { CreaturesState } from './creatures';
-import { InitiativeState } from './initiative';
+import { EncounterState } from './encounter';
 
 export interface TrackerState {
-  creatures: CreaturesState;
-  initiative: InitiativeState;
+  encounter: EncounterState;
 }

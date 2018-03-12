@@ -1,4 +1,8 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import { TrackerState } from '../state';
+import { NextInitiative, ResetInitiative } from '../state/encounter';
 
 @Component({
   selector: 'app-initiative-header',
@@ -6,12 +10,26 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./initiative-header.component.scss']
 })
 export class InitiativeHeaderComponent {
-  @Input() currentInitiative: number;
-  @Input() currentRound: number;
-  @Output() nextClick: EventEmitter<any> = new EventEmitter();
+  initiative: number;
+  round: number;
+
+  constructor(private store: Store<TrackerState>) {
+    const encounter = this.store.select(s => s.encounter);
+    encounter.select(e => e.round).subscribe(r => this.round = r);
+    encounter.select(e => e.initiative).subscribe(i => this.initiative = i);
+  }
+
+  onResetClick() {
+    this.store.dispatch(new ResetInitiative());
+  }
+
+  onNextClick() {
+    this.store.dispatch(new NextInitiative());
+  }
 
   get timePast(): string {
-    let round = this.currentRound || 0;
+    // TODO: Make selector.
+    let round = this.round || 0;
     round = Math.max(round - 1, 0);
     let secs = round * 6;
     const mins = Math.floor(secs / 60);

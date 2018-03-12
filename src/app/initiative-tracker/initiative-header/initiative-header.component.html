@@ -2,18 +2,18 @@
   <mat-card-content>
     <div class="cell">
       <div class="attribute-title">Initiative</div>
-      <span class="primary">{{currentInitiative || "--"}}</span>
+      <span class="primary">{{initiative || "--"}}</span>
     </div>
     <div class="cell">
       <div class="attribute-title">Round</div>
-      <span class="primary">{{currentRound}}</span>
+      <span class="primary">{{round}}</span>
     </div>
     <div class="cell">
       <div class="attribute-title">Time Past</div>
       <span class="primary">{{timePast}}</span>
     </div>
     <div class="cell">
-      <button mat-raised-button color="primary" (click)="nextClick.emit(null)">Next</button>
+      <button mat-raised-button color="primary" (click)="onNextClick()">Next</button>
     </div>
   </mat-card-content>
 </mat-card>

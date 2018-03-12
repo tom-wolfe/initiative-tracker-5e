@@ -1,9 +1,11 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-
-import * as _ from 'lodash';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
 
 import { CreatureInitiative } from '../models/creature-initiative';
-import { MatTableDataSource } from '@angular/material/table';
+import { TrackerState } from '../state';
+import { creaturesInInitiativeOrder } from '../state/encounter/encounter.selectors';
+import { RemoveCreature, AddCreatures } from '../state/encounter';
 
 @Component({
   selector: 'app-initiative-list',
@@ -12,28 +14,21 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class InitiativeListComponent {
   displayedColumns = ['name', 'initiative', 'hp', 'remove'];
-  @Input() creatures: CreatureInitiative[];
-  @Input() currentInitiative: number;
+  creatures: Observable<CreatureInitiative[]>;
+  initiative: number;
   @ViewChild('count') countInput: ElementRef;
   newCreature: CreatureInitiative = new CreatureInitiative();
   newCreatureCount = 1;
 
-  get dataSource(): MatTableDataSource<CreatureInitiative> {
-    return new MatTableDataSource(_.orderBy(this.creatures, ['initiative'], 'desc'));
+  constructor(private store: Store<TrackerState>) {
+    const encounter = this.store.select(s => s.encounter);
+    encounter.select(e => e.initiative).subscribe(i => this.initiative = i);
+    this.creatures = encounter.select(creaturesInInitiativeOrder);
   }
 
   onAddToInitiativeClick(e): void {
-    const init = this.newCreature.initiative || '1d20';
-    for (let x = 1; x <= this.newCreatureCount; x++) {
-      const creature = new CreatureInitiative(this.newCreature);
-      if (this.newCreatureCount > 1) {
-        creature.name += ` (#${x})`;
-      }
-      creature.currentHp = creature.maximumHp;
-      // TODO: Fix dice plz.
-      // creature.initiative = this.dice.roll(init).total;
-      this.creatures.push(creature);
-    }
+    const init = this.newCreature.initiative .toString() || '1d20';
+    this.store.dispatch(new AddCreatures(this.newCreature, this.newCreatureCount, init));
     this.newCreature = new CreatureInitiative();
     this.newCreatureCount = 1;
     this.countInput.nativeElement.focus();
@@ -42,7 +37,6 @@ export class InitiativeListComponent {
 
   onRemoveClick(e, creature) {
     e.preventDefault();
-    const index = this.creatures.indexOf(creature);
-    this.creatures.splice(index, 1);
+    this.store.dispatch(new RemoveCreature(creature));
   }
 }

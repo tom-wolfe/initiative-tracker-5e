@@ -1,7 +1,5 @@
-import { initiativeReducer } from './initiative';
-import { creaturesReducer } from './creatures';
+import { encounterReducer } from './encounter';
 
 export const reducers = {
-  initiative: initiativeReducer,
-  creatures: creaturesReducer
+  encounter: encounterReducer
 };

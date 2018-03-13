@@ -6,7 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { InitiativeHeaderComponent } from './initiative-header/initiative-header.component';
 import { InitiativeListComponent } from './initiative-list/initiative-list.component';
 import { InitiativeTrackerComponent } from './initiative-tracker.component';
-import { reducers } from './state';
+import { reducers } from './store';
 
 const ROUTES: Route[] = [
   {

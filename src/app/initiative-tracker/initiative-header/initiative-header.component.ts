@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { TrackerState } from '../state';
-import { NextInitiative, ResetInitiative } from '../state/encounter';
+import { AppState } from '../../store';
+import { NextInitiative, ResetInitiative, timePassed } from '../store/encounter';
 
 @Component({
   selector: 'app-initiative-header',
@@ -12,11 +12,13 @@ import { NextInitiative, ResetInitiative } from '../state/encounter';
 export class InitiativeHeaderComponent {
   initiative: number;
   round: number;
+  timePassed: string;
 
-  constructor(private store: Store<TrackerState>) {
-    const encounter = this.store.select(s => s.encounter);
+  constructor(private store: Store<AppState>) {
+    const encounter = this.store.select(s => s.tracker.encounter);
     encounter.select(e => e.round).subscribe(r => this.round = r);
     encounter.select(e => e.initiative).subscribe(i => this.initiative = i);
+    encounter.select(timePassed).subscribe(t => this.timePassed = t);
   }
 
   onResetClick() {
@@ -25,17 +27,5 @@ export class InitiativeHeaderComponent {
 
   onNextClick() {
     this.store.dispatch(new NextInitiative());
-  }
-
-  get timePast(): string {
-    // TODO: Make selector.
-    let round = this.round || 0;
-    round = Math.max(round - 1, 0);
-    let secs = round * 6;
-    const mins = Math.floor(secs / 60);
-    secs %= 60;
-    const strMin = (mins < 10 ? '0' : '') + mins.toString();
-    const strSec = (secs < 10 ? '0' : '') + secs.toString();
-    return `${strMin}:${strSec}`;
   }
 }

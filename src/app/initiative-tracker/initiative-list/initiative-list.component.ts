@@ -2,10 +2,9 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
+import { AppState } from '../../store';
 import { CreatureInitiative } from '../models/creature-initiative';
-import { TrackerState } from '../state';
-import { creaturesInInitiativeOrder } from '../state/encounter/encounter.selectors';
-import { RemoveCreature, AddCreatures } from '../state/encounter';
+import { AddCreatures, creaturesInInitiativeOrder, RemoveCreature } from '../store/encounter';
 
 @Component({
   selector: 'app-initiative-list',
@@ -20,8 +19,8 @@ export class InitiativeListComponent {
   newCreature: CreatureInitiative = new CreatureInitiative();
   newCreatureCount = 1;
 
-  constructor(private store: Store<TrackerState>) {
-    const encounter = this.store.select(s => s.encounter);
+  constructor(private store: Store<AppState>) {
+    const encounter = this.store.select(s => s.tracker.encounter);
     encounter.select(e => e.initiative).subscribe(i => this.initiative = i);
     this.creatures = encounter.select(creaturesInInitiativeOrder);
   }

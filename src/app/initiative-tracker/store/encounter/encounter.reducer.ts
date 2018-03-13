@@ -1,11 +1,12 @@
+import { CreatureInitiative } from '../../models';
 import * as Actions from './encounter.actions';
 import { creaturesInInitiativeOrder } from './encounter.selectors';
 import { EncounterState } from './encounter.state';
 
 export const initialState: EncounterState = {
   creatures: [],
-  round: null,
-  initiative: null
+  round: 0,
+  initiative: undefined
 };
 
 export function encounterReducer(state: EncounterState = initialState, action: Actions.EncounterAction): EncounterState {
@@ -13,18 +14,18 @@ export function encounterReducer(state: EncounterState = initialState, action: A
     case Actions.NextInitiative.TYPE: {
       const newState = Object.assign({}, state);
       const sortedCreatures = creaturesInInitiativeOrder(state);
-      if (!state.initiative) {
-        newState.initiative = sortedCreatures[0].initiative;
+      let nextInitiative = sortedCreatures.length > 0 ? sortedCreatures[0].initiative : 0;
+      if (state.initiative === undefined) {
         newState.round = 1;
       } else {
         const nextCreatures = sortedCreatures.filter(c => c.initiative < newState.initiative);
         if (nextCreatures.length > 0) {
-          newState.initiative = nextCreatures[0].initiative;
+          nextInitiative = nextCreatures[0].initiative;
         } else {
-          newState.initiative = sortedCreatures[0].initiative;
           newState.round++;
         }
       }
+      newState.initiative = nextInitiative;
       return newState;
     }
     case Actions.PreviousInitiative.TYPE: {
@@ -35,24 +36,23 @@ export function encounterReducer(state: EncounterState = initialState, action: A
       return initialState;
     }
     case Actions.AddCreatures.TYPE: {
-      // TODO: Make real.
-      for (let x = 1; x <= action.count; x++) {
-        const creature = new CreatureInitiative(this.newCreature);
-        if (this.newCreatureCount > 1) {
+      const newCreatures: CreatureInitiative[] = [];
+      for (let x = 1; x <= action.quantity; x++) {
+        const creature = new CreatureInitiative(action.creature);
+        if (action.quantity > 1) {
           creature.name += ` (#${x})`;
         }
         creature.currentHp = creature.maximumHp;
         // TODO: Fix dice plz.
         // creature.initiative = this.dice.roll(init).total;
-        this.creatures.push(creature);
+        newCreatures.push(creature);
       }
-      return state;
+      const creatures = [...state.creatures, ...newCreatures];
+      return Object.assign({}, state, { creatures });
     }
     case Actions.RemoveCreature.TYPE: {
-      // TODO: Make real.
-      const index = this.creatures.indexOf(creature);
-      this.creatures.splice(index, 1);
-      return state;
+      const creatures = state.creatures.filter(c => c !== action.creature);
+      return Object.assign({}, state, { creatures });
     }
     default: {
       return state;

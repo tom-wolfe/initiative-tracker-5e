@@ -20,23 +20,3 @@
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{active: initiative === row.initiative}"></mat-row>
 </mat-table>
-<mat-card>
-  <mat-card-content>
-    <mat-form-field>
-      <input matInput type="number" placeholder="Count (#)" [(ngModel)]="newCreatureCount" (keydown.enter)="onAddToInitiativeClick($event)"
-        #count>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput type="text" placeholder="Creature Name" [(ngModel)]="newCreature.name" (keydown.enter)="onAddToInitiativeClick($event)">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput type="text" placeholder="Initiative" [(ngModel)]="newCreature.initiative" (keydown.enter)="onAddToInitiativeClick($event)">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput type="text" placeholder="HP" [(ngModel)]="newCreature.maximumHp" (keydown.enter)="onAddToInitiativeClick($event)">
-    </mat-form-field>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button color="primary" (click)="onAddToInitiativeClick($event)">Add Creature{{newCreatureCount === 1 ? '' : 's'}}</button>
-  </mat-card-actions>
-</mat-card>

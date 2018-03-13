@@ -7,6 +7,7 @@ import { InitiativeHeaderComponent } from './initiative-header/initiative-header
 import { InitiativeListComponent } from './initiative-list/initiative-list.component';
 import { InitiativeTrackerComponent } from './initiative-tracker.component';
 import { reducers } from './store';
+import { AddCreaturesComponent } from './add-creatures/add-creatures.component';
 
 const ROUTES: Route[] = [
   {
@@ -25,6 +26,7 @@ const ROUTES: Route[] = [
     InitiativeTrackerComponent,
     InitiativeHeaderComponent,
     InitiativeListComponent,
+    AddCreaturesComponent
   ]
 })
 export class InitiativeTrackerModule { }

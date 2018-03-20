@@ -9,12 +9,16 @@
   </ng-container>
   <ng-container matColumnDef="hp">
     <mat-header-cell *matHeaderCellDef>HP</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{element.currentHp}}/{{element.maximumHp}}</mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="remove">
-    <mat-header-cell *matHeaderCellDef>Remove</mat-header-cell>
     <mat-cell *matCellDef="let element">
-      <button mat-button (click)="onRemoveClick($event, element)">Remove</button>
+      <button mat-button class="current-hp" (click)="onHealHarmClick(element)">{{element.currentHp}}</button>
+      <span>/</span>
+      <button mat-button (click)="onMaxHPClick(element)">{{element.maximumHp}}</button>
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button mat-button (click)="onRemoveClick(element)">Remove</button>
     </mat-cell>
   </ng-container>
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

@@ -8,6 +8,7 @@ import { InitiativeListComponent } from './initiative-list/initiative-list.compo
 import { InitiativeTrackerComponent } from './initiative-tracker.component';
 import { reducers } from './store';
 import { AddCreaturesComponent } from './add-creatures/add-creatures.component';
+import { HealHarmDialogComponent } from './heal-harm-dialog';
 
 const ROUTES: Route[] = [
   {
@@ -16,17 +17,27 @@ const ROUTES: Route[] = [
   }
 ];
 
+const DIALOGS = [
+  HealHarmDialogComponent
+];
+
+const COMPONENTS = [
+  InitiativeTrackerComponent,
+  InitiativeHeaderComponent,
+  InitiativeListComponent,
+  AddCreaturesComponent,
+  ...DIALOGS
+];
+
 @NgModule({
   imports: [
     SharedModule,
     RouterModule.forChild(ROUTES),
     StoreModule.forFeature('tracker', reducers),
   ],
+  entryComponents: [...DIALOGS],
   declarations: [
-    InitiativeTrackerComponent,
-    InitiativeHeaderComponent,
-    InitiativeListComponent,
-    AddCreaturesComponent
+    ...COMPONENTS
   ]
 })
 export class InitiativeTrackerModule { }

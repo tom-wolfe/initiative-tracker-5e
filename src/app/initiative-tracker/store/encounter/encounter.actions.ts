@@ -31,4 +31,16 @@ export class AddCreatures implements Action {
     constructor(public creature: CreatureInitiative, public quantity: number, public initiative: string) { }
 }
 
-export type EncounterAction = NextInitiative | PreviousInitiative | ResetInitiative | RemoveCreature | AddCreatures;
+export class HealCreature implements Action {
+    public static readonly TYPE = '[Encounter] Heal Creature';
+    readonly type = HealCreature.TYPE;
+    constructor(public creature: CreatureInitiative, public amount: number) { }
+}
+
+export class HarmCreature implements Action {
+    public static readonly TYPE = '[Encounter] Harm Creature';
+    readonly type = HarmCreature.TYPE;
+    constructor(public creature: CreatureInitiative, public amount: number) { }
+}
+
+export type EncounterAction = NextInitiative | PreviousInitiative | ResetInitiative | RemoveCreature | AddCreatures | HealCreature | HarmCreature;

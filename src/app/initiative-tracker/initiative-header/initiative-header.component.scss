@@ -3,7 +3,8 @@ mat-card-content {
     flex-direction: row;
     .cell {
         flex-grow: 1;
-
+        text-align: center;
+        
         .attribute-title {
             font-weight: bold;
         }

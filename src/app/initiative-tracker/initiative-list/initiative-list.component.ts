@@ -5,6 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import { AppState } from '../../store';
 import { CreatureInitiative } from '../models/creature-initiative';
 import { creaturesInInitiativeOrder, RemoveCreature } from '../store/encounter';
+import { MatDialog } from '@angular/material';
+import { HealHarmDialogComponent } from '../heal-harm-dialog';
 
 @Component({
   selector: 'app-initiative-list',
@@ -12,18 +14,29 @@ import { creaturesInInitiativeOrder, RemoveCreature } from '../store/encounter';
   styleUrls: ['./initiative-list.component.scss']
 })
 export class InitiativeListComponent {
-  displayedColumns = ['name', 'initiative', 'hp', 'remove'];
+  displayedColumns = ['name', 'initiative', 'hp', 'actions'];
   creatures: Observable<CreatureInitiative[]>;
   initiative: number;
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>, private dialog: MatDialog) {
     const encounter = this.store.select(s => s.tracker.encounter);
     encounter.select(e => e.initiative).subscribe(i => this.initiative = i);
     this.creatures = encounter.select(creaturesInInitiativeOrder);
   }
 
-  onRemoveClick(e, creature) {
-    e.preventDefault();
+  onRemoveClick(creature: CreatureInitiative) {
     this.store.dispatch(new RemoveCreature(creature));
+  }
+
+  onHealHarmClick(creature: CreatureInitiative) {
+    // TODO: Don't hardcode this width.
+    const dialog = this.dialog.open(HealHarmDialogComponent, { width: '500px', data: { creature } });
+    dialog.afterClosed().subscribe(result => {
+      console.log('The dialog was closed:', result);
+    });
+  }
+
+  onMaxHPClick(creature: CreatureInitiative) {
+    // TODO: Implement this.
   }
 }

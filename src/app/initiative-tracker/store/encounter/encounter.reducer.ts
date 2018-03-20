@@ -54,6 +54,14 @@ export function encounterReducer(state: EncounterState = initialState, action: A
       const creatures = state.creatures.filter(c => c !== action.creature);
       return Object.assign({}, state, { creatures });
     }
+    case Actions.HealCreature.TYPE: {
+      // TODO: Heal creature.
+      return state;
+    }
+    case Actions.HarmCreature.TYPE: {
+      // TODO: Harm creature.
+      return state;
+    }
     default: {
       return state;
     }

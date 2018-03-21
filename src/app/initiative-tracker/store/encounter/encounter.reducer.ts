@@ -1,3 +1,5 @@
+import { Dice } from 'dice-typescript';
+
 import { CreatureInitiative } from '../../models';
 import * as Actions from './encounter.actions';
 import { creaturesInInitiativeOrder } from './encounter.selectors';
@@ -36,15 +38,16 @@ export function encounterReducer(state: EncounterState = initialState, action: A
       return initialState;
     }
     case Actions.AddCreatures.TYPE: {
+      const dice = new Dice();
       const newCreatures: CreatureInitiative[] = [];
       for (let x = 1; x <= action.quantity; x++) {
         const creature = new CreatureInitiative(action.creature);
         if (action.quantity > 1) {
           creature.name += ` (#${x})`;
         }
+        creature.maximumHp = dice.roll(action.creature.maximumHp || '10').total;
         creature.currentHp = creature.maximumHp;
-        // TODO: Fix dice plz.
-        // creature.initiative = this.dice.roll(init).total;
+        creature.initiative = dice.roll(action.creature.initiative || '1d20').total;
         newCreatures.push(creature);
       }
       const creatures = [...state.creatures, ...newCreatures];

@@ -29,7 +29,7 @@ export function encounterReducer(state: EncounterState = initialState, action: A
       return newState;
     }
     case Actions.PreviousInitiative.TYPE: {
-      // TODO: Implement.
+      // TODO: Implement previous initiative.
       return state;
     }
     case Actions.ResetInitiative.TYPE: {

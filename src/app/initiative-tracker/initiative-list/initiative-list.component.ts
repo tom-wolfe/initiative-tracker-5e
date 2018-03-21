@@ -31,12 +31,9 @@ export class InitiativeListComponent {
   onHealHarmClick(creature: CreatureInitiative) {
     // TODO: Don't hardcode this width.
     const dialog = this.dialog.open(HealHarmDialogComponent, { width: '500px', data: { creature } });
-    dialog.afterClosed().subscribe(result => {
-      console.log('The dialog was closed:', result);
-    });
   }
 
   onMaxHPClick(creature: CreatureInitiative) {
-    // TODO: Implement this.
+    // TODO: Implement max HP dialog.
   }
 }

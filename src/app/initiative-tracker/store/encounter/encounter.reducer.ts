@@ -11,7 +11,7 @@ export const initialState: EncounterState = {
   initiative: undefined
 };
 
-export function creatureReducer(state: CreatureInitiative, action: Actions.EncounterAction): CreatureInitiative {
+export function creatureReducer(state: CreatureInitiative, action: Actions.CreatureAction): CreatureInitiative {
   switch (action.type) {
     case Actions.RemoveCreature.TYPE: {
       return null;
@@ -24,6 +24,14 @@ export function creatureReducer(state: CreatureInitiative, action: Actions.Encou
     case Actions.HarmCreature.TYPE: {
       const creature = Object.assign({}, state);
       creature.currentHp = Math.max(0, creature.currentHp - action.amount);
+      return creature;
+    }
+    case Actions.UpdateCreature.TYPE: {
+      const dice = new Dice();
+      const creature = Object.assign({}, action.newCreature);
+      creature.maximumHp = dice.roll((creature.maximumHp || '10').toString()).total;
+      creature.currentHp = dice.roll((creature.currentHp || creature.maximumHp).toString()).total;
+      creature.initiative = dice.roll((creature.initiative || '1d20').toString()).total;
       return creature;
     }
     default: {
@@ -75,6 +83,7 @@ export function encounterReducer(state: EncounterState = initialState, action: A
       return Object.assign({}, state, { creatures });
     }
     case Actions.RemoveCreature.TYPE:
+    case Actions.UpdateCreature.TYPE:
     case Actions.HealCreature.TYPE:
     case Actions.HarmCreature.TYPE: {
       const creatures = state.creatures

@@ -7,6 +7,7 @@ import { CreatureInitiative } from '../models/creature-initiative';
 import { creaturesInInitiativeOrder, RemoveCreature } from '../store/encounter';
 import { MatDialog } from '@angular/material';
 import { HealHarmDialogComponent } from '../heal-harm-dialog';
+import { EditCreatureDialogComponent } from '../edit-creature-dialog';
 
 @Component({
   selector: 'app-initiative-list',
@@ -30,11 +31,12 @@ export class InitiativeListComponent {
 
   onHealHarmClick(creature: CreatureInitiative) {
     // TODO: Don't hardcode this width.
-    const dialog = this.dialog.open(HealHarmDialogComponent, { width: '500px', data: { creature } });
+    this.dialog.open(HealHarmDialogComponent, { width: '500px', data: { creature } });
   }
 
   onNameClick(e, creature: CreatureInitiative) {
-    // TODO: Implement edit dialog.
+    // TODO: Don't hardcode this width.
+    this.dialog.open(EditCreatureDialogComponent, { width: '500px', data: { creature } });
     e.preventDefault();
   }
 }

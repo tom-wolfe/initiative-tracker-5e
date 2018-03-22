@@ -1,12 +1,14 @@
 <h1 mat-dialog-title>{{creature.name}}</h1>
 <div mat-dialog-content>
-  <button (click)="onAddClick(-10)" mat-button>-10</button>
-  <button (click)="onAddClick(-1)" mat-button>-1</button>
-  <input matInput type="number" placeholder="#" [(ngModel)]="amount">
-  <button (click)="onAddClick(1)" mat-button>+1</button>
-  <button (click)="onAddClick(10)" mat-button>+10</button>
+  <div class="input-form">
+    <button (click)="onAddClick(-10)" mat-button>-10</button>
+    <button (click)="onAddClick(-1)" mat-button>-1</button>
+    <input matInput type="number" placeholder="#" [(ngModel)]="amount">
+    <button (click)="onAddClick(1)" mat-button>+1</button>
+    <button (click)="onAddClick(10)" mat-button>+10</button>
+  </div>
 </div>
-<div mat-dialog-actions>
+<div mat-dialog-actions class="dialog-buttons">
   <button mat-raised-button color="secondary" (click)="onCancelClick()">Cancel</button>
   <button mat-raised-button color="success" (click)="onHealClick()">Heal</button>
   <button mat-raised-button color="danger" (click)="onHarmClick()">Harm</button>

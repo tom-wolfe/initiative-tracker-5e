@@ -1,7 +1,9 @@
 <mat-table #table [dataSource]="creatures">
   <ng-container matColumnDef="name">
     <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+    <mat-cell *matCellDef="let element">
+      <a href="#" (click)="onNameClick($event, element)">{{element.name}}</a>
+    </mat-cell>
   </ng-container>
   <ng-container matColumnDef="initiative">
     <mat-header-cell *matHeaderCellDef>Initiative</mat-header-cell>
@@ -10,9 +12,9 @@
   <ng-container matColumnDef="hp">
     <mat-header-cell *matHeaderCellDef>HP</mat-header-cell>
     <mat-cell *matCellDef="let element">
-      <button mat-button class="current-hp" (click)="onHealHarmClick(element)">{{element.currentHp}}</button>
-      <span>/</span>
-      <button mat-button (click)="onMaxHPClick(element)">{{element.maximumHp}}</button>
+      <button mat-button class="hp" (click)="onHealHarmClick(element)">
+        {{element.currentHp}} / {{element.maximumHp}}
+      </button>
     </mat-cell>
   </ng-container>
   <ng-container matColumnDef="actions">

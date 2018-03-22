@@ -33,7 +33,8 @@ export class InitiativeListComponent {
     const dialog = this.dialog.open(HealHarmDialogComponent, { width: '500px', data: { creature } });
   }
 
-  onMaxHPClick(creature: CreatureInitiative) {
-    // TODO: Implement max HP dialog.
+  onNameClick(e, creature: CreatureInitiative) {
+    // TODO: Implement edit dialog.
+    e.preventDefault();
   }
 }

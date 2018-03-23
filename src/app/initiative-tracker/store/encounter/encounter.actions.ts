@@ -46,7 +46,7 @@ export class HarmCreature implements Action {
 export class UpdateCreature implements Action {
     public static readonly TYPE = '[Encounter] Update Creature';
     readonly type = UpdateCreature.TYPE;
-    constructor(public creature: CreatureInitiative, public newCreature: CreatureInitiative) { }
+    constructor(public creature: CreatureInitiative, public newCreature: Partial<CreatureInitiative>) { }
 }
 
 export type CreatureAction = HealCreature | HarmCreature | UpdateCreature | RemoveCreature;

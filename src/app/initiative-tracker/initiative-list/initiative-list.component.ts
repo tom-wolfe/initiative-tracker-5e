@@ -4,8 +4,8 @@ import { Observable } from 'rxjs/Observable';
 
 import { AppState } from '../../store';
 import { CreatureInitiative } from '../models/creature-initiative';
-import { creaturesInInitiativeOrder, RemoveCreature } from '../store/encounter';
-import { MatDialog } from '@angular/material';
+import { creaturesInInitiativeOrder, RemoveCreature, UpdateCreature } from '../store/encounter';
+import { MatDialog, MatSlideToggleChange } from '@angular/material';
 import { HealHarmDialogComponent } from '../heal-harm-dialog';
 import { EditCreatureDialogComponent } from '../edit-creature-dialog';
 import { LinksService } from '../../shared/links.service';
@@ -16,7 +16,7 @@ import { LinksService } from '../../shared/links.service';
   styleUrls: ['./initiative-list.component.scss']
 })
 export class InitiativeListComponent {
-  displayedColumns = ['name', 'initiative', 'hp', 'conditions', 'actions'];
+  displayedColumns = ['active', 'name', 'initiative', 'hp', 'conditions', 'actions'];
   creatures: Observable<CreatureInitiative[]>;
   initiative: number;
 
@@ -35,7 +35,7 @@ export class InitiativeListComponent {
   }
 
   isActive(creature: CreatureInitiative) {
-    return this.initiative === creature.initiative;
+    return this.initiative === creature.initiative && creature.active;
   }
 
   onRemoveClick(creature: CreatureInitiative) {
@@ -51,5 +51,10 @@ export class InitiativeListComponent {
     // TODO: Don't hardcode this width.
     this.dialog.open(EditCreatureDialogComponent, { width: '500px', data: { creature } });
     e.preventDefault();
+  }
+
+  onActiveToggle(e: MatSlideToggleChange, creature: CreatureInitiative) {
+    console.log('Shploo?');
+    this.store.dispatch(new UpdateCreature(creature, { active: e.checked }))
   }
 }

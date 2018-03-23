@@ -1,4 +1,10 @@
 <mat-table #table [dataSource]="creatures">
+  <ng-container matColumnDef="active">
+    <mat-header-cell *matHeaderCellDef class="is-active">Active?</mat-header-cell>
+    <mat-cell *matCellDef="let element" class="is-active">
+      <mat-slide-toggle [checked]="element.active" [color]="primary" (change)="onActiveToggle($event, element)"></mat-slide-toggle>
+    </mat-cell>
+  </ng-container>
   <ng-container matColumnDef="name">
     <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
     <mat-cell *matCellDef="let element">

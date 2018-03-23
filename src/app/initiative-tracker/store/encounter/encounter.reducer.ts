@@ -19,16 +19,18 @@ export function creatureReducer(state: CreatureInitiative, action: Actions.Creat
     case Actions.HealCreature.TYPE: {
       const creature = Object.assign({}, state);
       creature.currentHp = Math.min(creature.maximumHp, creature.currentHp + action.amount);
+      if (creature.currentHp > 0) { creature.active = true; }
       return creature;
     }
     case Actions.HarmCreature.TYPE: {
       const creature = Object.assign({}, state);
       creature.currentHp = Math.max(0, creature.currentHp - action.amount);
+      if (creature.currentHp <= 0) { creature.active = false; }
       return creature;
     }
     case Actions.UpdateCreature.TYPE: {
       const dice = new Dice();
-      const creature = Object.assign({}, action.newCreature);
+      const creature = Object.assign({}, state, action.newCreature);
       creature.maximumHp = dice.roll((creature.maximumHp || '10').toString()).total;
       creature.currentHp = dice.roll((creature.currentHp || creature.maximumHp).toString()).total;
       creature.initiative = dice.roll((creature.initiative || '1d20').toString()).total;
@@ -44,7 +46,7 @@ export function encounterReducer(state: EncounterState = initialState, action: A
   switch (action.type) {
     case Actions.NextInitiative.TYPE: {
       const newState = Object.assign({}, state);
-      const sortedCreatures = creaturesInInitiativeOrder(state);
+      const sortedCreatures = creaturesInInitiativeOrder(state).filter(c => c.active);
       let nextInitiative = sortedCreatures.length > 0 ? sortedCreatures[0].initiative : 0;
       if (state.initiative === undefined) {
         newState.round = 1;

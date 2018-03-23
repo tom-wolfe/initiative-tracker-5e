@@ -4,6 +4,7 @@ export class CreatureInitiative {
     currentHp: number;
     initiative: number = null;
     conditions: string[] = [];
+    active: boolean = true;
     constructor(values?: CreatureInitiative) {
         Object.assign(this, values);
     }

@@ -11,7 +11,7 @@ import { HealCreature, HarmCreature } from '../store/encounter';
   styleUrls: ['./heal-harm-dialog.component.scss']
 })
 export class HealHarmDialogComponent {
-  amount: number = 0;
+  amount = 0;
   get creature(): CreatureInitiative {
     return this.data.creature;
   }

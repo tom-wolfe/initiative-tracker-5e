@@ -20,7 +20,7 @@ export class EditCreatureDialogComponent {
     private store: Store<AppState>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    this.creature = Object.assign({}, data.creature, { conditions: data.creature.conditions.map(c => c) })
+    this.creature = Object.assign({}, data.creature, { conditions: data.creature.conditions.map(c => c) });
   }
 
   isSelected(condition: string): boolean {

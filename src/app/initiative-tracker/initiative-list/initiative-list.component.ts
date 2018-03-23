@@ -54,7 +54,6 @@ export class InitiativeListComponent {
   }
 
   onActiveToggle(e: MatSlideToggleChange, creature: CreatureInitiative) {
-    console.log('Shploo?');
     this.store.dispatch(new UpdateCreature(creature, { active: e.checked }))
   }
 }

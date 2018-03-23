@@ -1,0 +1,7 @@
+<mat-chip-list>
+  <mat-chip
+    color="primary"
+    [selected]="isSelected(condition)"
+    *ngFor="let condition of conditions"
+  >{{condition}}</mat-chip>
+</mat-chip-list>

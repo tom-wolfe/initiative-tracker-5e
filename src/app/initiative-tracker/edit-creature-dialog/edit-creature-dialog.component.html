@@ -15,6 +15,7 @@
   <mat-form-field>
     <input matInput type="text" placeholder="Maximum HP" [(ngModel)]="creature.maximumHp" (keydown.enter)="onOKClick($event)">
   </mat-form-field>
+  <app-condition-list [creature]="creature"></app-condition-list>
 </div>
 <div mat-dialog-actions>
   <button mat-raised-button color="secondary" (click)="onCancelClick()">Cancel</button>

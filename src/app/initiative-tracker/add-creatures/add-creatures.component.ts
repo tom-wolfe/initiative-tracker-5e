@@ -17,7 +17,7 @@ export class AddCreaturesComponent {
   constructor(private store: Store<AppState>) { }
 
   onAddToInitiativeClick(e): void {
-    const init = this.newCreature.initiative.toString() || '1d20';
+    const init = (this.newCreature.initiative || '1d20').toString();
     this.store.dispatch(new AddCreatures(this.newCreature, this.newCreatureCount, init));
     this.newCreature = new CreatureInitiative();
     this.newCreatureCount = 1;

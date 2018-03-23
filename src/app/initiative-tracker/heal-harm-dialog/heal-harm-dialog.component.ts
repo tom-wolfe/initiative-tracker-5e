@@ -7,10 +7,11 @@ import { HealCreature, HarmCreature } from '../store/encounter';
 
 @Component({
   selector: 'app-heal-harm-dialog',
-  templateUrl: './heal-harm-dialog.component.html'
+  templateUrl: './heal-harm-dialog.component.html',
+  styleUrls: ['./heal-harm-dialog.component.scss']
 })
 export class HealHarmDialogComponent {
-  amount: number;
+  amount: number = 0;
   get creature(): CreatureInitiative {
     return this.data.creature;
   }

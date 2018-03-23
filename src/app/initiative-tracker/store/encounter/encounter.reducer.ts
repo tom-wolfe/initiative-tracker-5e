@@ -11,6 +11,35 @@ export const initialState: EncounterState = {
   initiative: undefined
 };
 
+export function creatureReducer(state: CreatureInitiative, action: Actions.CreatureAction): CreatureInitiative {
+  switch (action.type) {
+    case Actions.RemoveCreature.TYPE: {
+      return null;
+    }
+    case Actions.HealCreature.TYPE: {
+      const creature = Object.assign({}, state);
+      creature.currentHp = Math.min(creature.maximumHp, creature.currentHp + action.amount);
+      return creature;
+    }
+    case Actions.HarmCreature.TYPE: {
+      const creature = Object.assign({}, state);
+      creature.currentHp = Math.max(0, creature.currentHp - action.amount);
+      return creature;
+    }
+    case Actions.UpdateCreature.TYPE: {
+      const dice = new Dice();
+      const creature = Object.assign({}, action.newCreature);
+      creature.maximumHp = dice.roll((creature.maximumHp || '10').toString()).total;
+      creature.currentHp = dice.roll((creature.currentHp || creature.maximumHp).toString()).total;
+      creature.initiative = dice.roll((creature.initiative || '1d20').toString()).total;
+      return creature;
+    }
+    default: {
+      return state;
+    }
+  }
+}
+
 export function encounterReducer(state: EncounterState = initialState, action: Actions.EncounterAction): EncounterState {
   switch (action.type) {
     case Actions.NextInitiative.TYPE: {
@@ -53,17 +82,14 @@ export function encounterReducer(state: EncounterState = initialState, action: A
       const creatures = [...state.creatures, ...newCreatures];
       return Object.assign({}, state, { creatures });
     }
-    case Actions.RemoveCreature.TYPE: {
-      const creatures = state.creatures.filter(c => c !== action.creature);
-      return Object.assign({}, state, { creatures });
-    }
-    case Actions.HealCreature.TYPE: {
-      // TODO: Heal creature.
-      return state;
-    }
+    case Actions.RemoveCreature.TYPE:
+    case Actions.UpdateCreature.TYPE:
+    case Actions.HealCreature.TYPE:
     case Actions.HarmCreature.TYPE: {
-      // TODO: Harm creature.
-      return state;
+      const creatures = state.creatures
+        .map(c => c === action.creature ? creatureReducer(c, action) : c)
+        .filter(c => c);
+      return Object.assign({}, state, { creatures });
     }
     default: {
       return state;

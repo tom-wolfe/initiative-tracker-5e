@@ -7,6 +7,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatChipsModule } from '@angular/material';
+import { MatIconModule } from '@angular/material';
 
 const MODULES = [
   MatToolbarModule,
@@ -16,7 +17,8 @@ const MODULES = [
   MatTableModule,
   MatFormFieldModule,
   MatInputModule,
-  MatChipsModule
+  MatChipsModule,
+  MatIconModule
 ];
 
 @NgModule({

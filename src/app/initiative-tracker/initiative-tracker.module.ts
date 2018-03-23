@@ -10,6 +10,7 @@ import { InitiativeHeaderComponent } from './initiative-header/initiative-header
 import { InitiativeListComponent } from './initiative-list/initiative-list.component';
 import { InitiativeTrackerComponent } from './initiative-tracker.component';
 import { reducers } from './store';
+import { EditCreatureDialogComponent } from './edit-creature-dialog';
 
 const ROUTES: Route[] = [
   {
@@ -19,7 +20,8 @@ const ROUTES: Route[] = [
 ];
 
 const DIALOGS = [
-  HealHarmDialogComponent
+  HealHarmDialogComponent,
+  EditCreatureDialogComponent
 ];
 
 const COMPONENTS = [

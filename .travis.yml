@@ -22,6 +22,6 @@ cache:
 
 script:
   - npm run build
-  - npm run lint
-  - npm run test
-  - npm run codacy
+  # - npm run lint
+  # - npm run test
+  # - npm run codacy

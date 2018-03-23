@@ -1,5 +1,7 @@
 # Initiative Tracker
 
+This project is meant to be a lightweight tool for handling combat initiative in 5th edition D&D.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
 
 ## Development server

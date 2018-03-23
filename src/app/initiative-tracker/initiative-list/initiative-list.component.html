@@ -22,5 +22,5 @@
     </mat-cell>
   </ng-container>
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{active: initiative === row.initiative}"></mat-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{active: isActive(row)}"></mat-row>
 </mat-table>

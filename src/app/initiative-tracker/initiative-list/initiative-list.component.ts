@@ -24,6 +24,10 @@ export class InitiativeListComponent {
     this.creatures = encounter.select(creaturesInInitiativeOrder);
   }
 
+  isActive(creature: CreatureInitiative) {
+    return this.initiative === creature.initiative;
+  }
+
   onRemoveClick(creature: CreatureInitiative) {
     this.store.dispatch(new RemoveCreature(creature));
   }

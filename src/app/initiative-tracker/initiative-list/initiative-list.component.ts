@@ -38,6 +38,10 @@ export class InitiativeListComponent {
     return this.initiative === creature.initiative && creature.active;
   }
 
+  creatureHpPercent(creature: CreatureInitiative): number {
+    return creature.currentHp / creature.maximumHp * 100;
+  }
+
   onRemoveClick(creature: CreatureInitiative) {
     this.store.dispatch(new RemoveCreature(creature));
   }
@@ -49,7 +53,7 @@ export class InitiativeListComponent {
 
   onNameClick(e, creature: CreatureInitiative) {
     // TODO: Don't hardcode this width.
-    this.dialog.open(EditCreatureDialogComponent, { width: '500px', data: { creature } });
+    this.dialog.open(EditCreatureDialogComponent, { width: '600px', data: { creature } });
     e.preventDefault();
   }
 

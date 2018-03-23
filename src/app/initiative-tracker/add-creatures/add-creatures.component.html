@@ -13,8 +13,8 @@
     <mat-form-field>
       <input matInput type="text" placeholder="HP" [(ngModel)]="newCreature.maximumHp" (keydown.enter)="onAddToInitiativeClick($event)">
     </mat-form-field>
+    <button mat-mini-fab color="primary" (click)="onAddToInitiativeClick($event)">
+      <mat-icon>add</mat-icon>
+    </button>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button color="primary" (click)="onAddToInitiativeClick($event)">Add Creature{{newCreatureCount === 1 ? '' : 's'}}</button>
-  </mat-card-actions>
 </mat-card>

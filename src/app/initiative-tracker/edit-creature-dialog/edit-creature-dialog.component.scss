@@ -1,4 +1,14 @@
-.name-group {
+.full-width {
   display: flex;
   flex-direction: column;
+}
+
+.hp {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  mat-form-field {
+    flex-grow: 1;
+    
+  }
 }

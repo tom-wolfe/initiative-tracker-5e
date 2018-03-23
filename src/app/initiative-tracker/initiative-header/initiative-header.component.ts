@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { AppState } from '../../store';
-import { NextInitiative, ResetInitiative, timePassed } from '../store/encounter';
+import { NextInitiative, ResetInitiative, timePassed, PreviousInitiative } from '../store/encounter';
 
 @Component({
   selector: 'app-initiative-header',
@@ -23,6 +23,10 @@ export class InitiativeHeaderComponent {
 
   onResetClick() {
     this.store.dispatch(new ResetInitiative());
+  }
+
+  onBackClick() {
+    this.store.dispatch(new PreviousInitiative());
   }
 
   onNextClick() {

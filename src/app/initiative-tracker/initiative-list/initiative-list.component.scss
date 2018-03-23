@@ -3,14 +3,33 @@
 }
 
 .hp {
-    // TODO: Make current HP background color or add health bar..
-    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    button {
+        flex-grow: 1;
+    }
 }
 
 .cell-actions {
     text-align: right;
 }
 
-.is-active {
+.is-active, .initiative {
     flex: 0 0 100px;
+}
+
+.center {
+    text-align: center;
+}
+
+.name {
+    display: flex;
+    button {
+        flex-grow: 1;
+        text-align: left;
+    }
+}
+
+.mat-cell {
+    padding: 4px;
 }

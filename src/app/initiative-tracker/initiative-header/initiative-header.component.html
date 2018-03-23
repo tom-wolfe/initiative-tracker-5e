@@ -13,7 +13,9 @@
       <span class="primary">{{timePassed}}</span>
     </div>
     <div class="cell">
-      <button mat-raised-button color="primary" (click)="onNextClick()">Next</button>
+      <button mat-fab color="primary" (click)="onBackClick()"><mat-icon>navigate_before</mat-icon></button>
+      <button mat-fab color="primary" (click)="onNextClick()"><mat-icon>navigate_next</mat-icon></button>
+      <button mat-fab color="warn" (click)="onResetClick()"><mat-icon>restore</mat-icon></button>
     </div>
   </mat-card-content>
 </mat-card>

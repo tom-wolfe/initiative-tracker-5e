@@ -1,21 +1,25 @@
-<mat-card>
-  <mat-card-content>
-    <div class="cell">
-      <div class="attribute-title">Initiative</div>
-      <span class="primary">{{initiative || "--"}}</span>
-    </div>
-    <div class="cell">
-      <div class="attribute-title">Round</div>
-      <span class="primary">{{round}}</span>
-    </div>
-    <div class="cell">
-      <div class="attribute-title">Time</div>
-      <span class="primary">{{timePassed}}</span>
-    </div>
-    <div class="cell">
-      <button mat-fab color="primary" (click)="onBackClick()"><mat-icon>navigate_before</mat-icon></button>
-      <button mat-fab color="primary" (click)="onNextClick()"><mat-icon>navigate_next</mat-icon></button>
-      <button mat-fab color="warn" (click)="onResetClick()"><mat-icon>restore</mat-icon></button>
-    </div>
-  </mat-card-content>
-</mat-card>
+<mat-card-content>
+  <div class="cell">
+    <div class="attribute-title">Initiative</div>
+    <span class="primary">{{initiative || "--"}}</span>
+  </div>
+  <div class="cell">
+    <div class="attribute-title">Round</div>
+    <span class="primary">{{round}}</span>
+  </div>
+  <div class="cell">
+    <div class="attribute-title">Time</div>
+    <span class="primary">{{timePassed}}</span>
+  </div>
+  <div class="cell">
+    <button mat-fab color="primary" (click)="onBackClick()">
+      <mat-icon>navigate_before</mat-icon>
+    </button>
+    <button mat-fab color="primary" (click)="onNextClick()">
+      <mat-icon>navigate_next</mat-icon>
+    </button>
+    <button mat-fab color="warn" (click)="onResetClick()">
+      <mat-icon>restore</mat-icon>
+    </button>
+  </div>
+</mat-card-content>

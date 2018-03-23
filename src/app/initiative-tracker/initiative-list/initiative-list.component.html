@@ -1,50 +1,52 @@
-<mat-table #table [dataSource]="creatures">
-  <ng-container matColumnDef="active">
-    <mat-header-cell *matHeaderCellDef class="is-active">Active?</mat-header-cell>
-    <mat-cell *matCellDef="let element" class="is-active">
-      <mat-slide-toggle [checked]="element.active" [color]="primary" (change)="onActiveToggle($event, element)"></mat-slide-toggle>
-    </mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="name">
-    <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
-    <mat-cell *matCellDef="let element" class="name">
-      <button mat-button (click)="onNameClick($event, element)">{{element.name}}</button>
-    </mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="initiative">
-    <mat-header-cell *matHeaderCellDef class="initiative center">Initiative</mat-header-cell>
-    <mat-cell *matCellDef="let element" class="initiative center">{{element.initiative}}</mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="hp" class="center">
-    <mat-header-cell *matHeaderCellDef class="center">HP</mat-header-cell>
-    <mat-cell *matCellDef="let element" class="hp center">
-      <button mat-button (click)="onHealHarmClick(element)">
-        {{element.currentHp}} / {{element.maximumHp}}
-      </button>
-      <div class="bar">
-        <mat-progress-bar mode="determinate" [value]="creatureHpPercent(element)"></mat-progress-bar>
-      </div>
-    </mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="conditions">
-    <mat-header-cell *matHeaderCellDef>Conditions</mat-header-cell>
-    <mat-cell *matCellDef="let element">
-      <span *ngFor="let condition of element.conditions">
-        <a [href]="conditionLink(condition)" target="_new">{{condition}}</a>&nbsp;
-      </span>
-    </mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="actions">
-    <mat-header-cell *matHeaderCellDef></mat-header-cell>
-    <mat-cell *matCellDef="let element" class="cell-actions">
-      <a mat-mini-fab [href]="creatureLink(element)" target="_new" color="black">
-        <img src="/assets/ddb.png" width="24" height="24" />
-      </a>
-      <button mat-mini-fab color="primary" (click)="onRemoveClick(element)">
-        <mat-icon>remove</mat-icon>
-      </button>
-    </mat-cell>
-  </ng-container>
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{active: isActive(row) }"></mat-row>
-</mat-table>
+<mat-card-content>
+  <mat-table #table [dataSource]="creatures">
+    <ng-container matColumnDef="active">
+      <mat-header-cell *matHeaderCellDef class="is-active">Active?</mat-header-cell>
+      <mat-cell *matCellDef="let element" class="is-active">
+        <mat-slide-toggle [checked]="element.active" [color]="primary" (change)="onActiveToggle($event, element)"></mat-slide-toggle>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+      <mat-cell *matCellDef="let element" class="name">
+        <button mat-button (click)="onNameClick($event, element)">{{element.name}}</button>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="initiative">
+      <mat-header-cell *matHeaderCellDef class="initiative center">Initiative</mat-header-cell>
+      <mat-cell *matCellDef="let element" class="initiative center">{{element.initiative}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="hp" class="center">
+      <mat-header-cell *matHeaderCellDef class="center">HP</mat-header-cell>
+      <mat-cell *matCellDef="let element" class="hp center">
+        <button mat-button (click)="onHealHarmClick(element)">
+          {{element.currentHp}} / {{element.maximumHp}}
+        </button>
+        <div class="bar">
+          <mat-progress-bar mode="determinate" [value]="creatureHpPercent(element)"></mat-progress-bar>
+        </div>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="conditions">
+      <mat-header-cell *matHeaderCellDef>Conditions</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span *ngFor="let condition of element.conditions">
+          <a [href]="conditionLink(condition)" target="_new">{{condition}}</a>&nbsp;
+        </span>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let element" class="cell-actions">
+        <a mat-mini-fab [href]="creatureLink(element)" target="_new" color="black">
+          <img src="/assets/ddb.png" width="24" height="24" />
+        </a>
+        <button mat-mini-fab color="primary" (click)="onRemoveClick(element)">
+          <mat-icon>remove</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{active: isActive(row) }"></mat-row>
+  </mat-table>
+</mat-card-content>

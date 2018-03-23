@@ -1,20 +1,18 @@
-<mat-card>
-  <mat-card-content>
-    <mat-form-field>
-      <input matInput type="number" placeholder="Count (#)" [(ngModel)]="newCreatureCount" (keydown.enter)="onAddToInitiativeClick($event)"
-        #count>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput type="text" placeholder="Creature Name" [(ngModel)]="newCreature.name" (keydown.enter)="onAddToInitiativeClick($event)">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput type="text" placeholder="Initiative" [(ngModel)]="newCreature.initiative" (keydown.enter)="onAddToInitiativeClick($event)">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput type="text" placeholder="HP" [(ngModel)]="newCreature.maximumHp" (keydown.enter)="onAddToInitiativeClick($event)">
-    </mat-form-field>
-    <button mat-mini-fab color="primary" (click)="onAddToInitiativeClick($event)">
-      <mat-icon>add</mat-icon>
-    </button>
-  </mat-card-content>
-</mat-card>
+<mat-card-content>
+  <mat-form-field>
+    <input matInput type="number" placeholder="Count (#)" [(ngModel)]="newCreatureCount" (keydown.enter)="onAddToInitiativeClick($event)"
+      #count>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" placeholder="Creature Name" [(ngModel)]="newCreature.name" (keydown.enter)="onAddToInitiativeClick($event)">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" placeholder="Initiative" [(ngModel)]="newCreature.initiative" (keydown.enter)="onAddToInitiativeClick($event)">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" placeholder="HP" [(ngModel)]="newCreature.maximumHp" (keydown.enter)="onAddToInitiativeClick($event)">
+  </mat-form-field>
+  <button mat-mini-fab color="primary" (click)="onAddToInitiativeClick($event)">
+    <mat-icon>add</mat-icon>
+  </button>
+</mat-card-content>

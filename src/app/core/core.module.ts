@@ -15,7 +15,7 @@ const COMPONENTS = [
     imports: [
         SharedModule,
         RouterModule.forRoot([]),
-        StoreModule.forRoot({ }),
+        StoreModule.forRoot({}),
         StoreDevtoolsModule.instrument({ maxAge: 5 }),
     ],
     declarations: [

@@ -5,6 +5,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialModule } from './material.module';
+import { LinksService } from './links.service';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './store';
 
 const MODULES = [
   CommonModule,
@@ -16,9 +19,13 @@ const MODULES = [
 
 @NgModule({
   imports: [
-    ...MODULES
+    ...MODULES,
+    StoreModule.forFeature('shared', reducers),
   ],
   declarations: [
+  ],
+  providers: [
+    LinksService
   ],
   exports: [
     ...MODULES,

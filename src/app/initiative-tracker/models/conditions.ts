@@ -1,6 +1,17 @@
 export const Conditions: string[] = [
     'Blinded',
+    'Charmed',
+    'Deafened',
+    'Exhaustion',
+    'Frightened',
+    'Grappled',
+    'Incapacitated',
+    'Invisible',
+    'Paralyzed',
+    'Petrified',
     'Poisoned',
-    'Exhausted',
-    'Prone'
+    'Prone',
+    'Restrained',
+    'Stunned',
+    'Unconscious',
 ];

@@ -8,6 +8,7 @@ import { creaturesInInitiativeOrder, RemoveCreature } from '../store/encounter';
 import { MatDialog } from '@angular/material';
 import { HealHarmDialogComponent } from '../heal-harm-dialog';
 import { EditCreatureDialogComponent } from '../edit-creature-dialog';
+import { LinksService } from '../../shared/links.service';
 
 @Component({
   selector: 'app-initiative-list',
@@ -15,14 +16,22 @@ import { EditCreatureDialogComponent } from '../edit-creature-dialog';
   styleUrls: ['./initiative-list.component.scss']
 })
 export class InitiativeListComponent {
-  displayedColumns = ['name', 'initiative', 'hp', 'actions'];
+  displayedColumns = ['name', 'initiative', 'hp', 'conditions', 'actions'];
   creatures: Observable<CreatureInitiative[]>;
   initiative: number;
 
-  constructor(private store: Store<AppState>, private dialog: MatDialog) {
+  constructor(private store: Store<AppState>, private dialog: MatDialog, private links: LinksService) {
     const encounter = this.store.select(s => s.tracker.encounter);
     encounter.select(e => e.initiative).subscribe(i => this.initiative = i);
     this.creatures = encounter.select(creaturesInInitiativeOrder);
+  }
+
+  conditionLink(condition: string): string {
+    return this.links.condition(condition);
+  }
+
+  creatureLink(creature: CreatureInitiative): string {
+    return this.links.creature(creature.name);
   }
 
   isActive(creature: CreatureInitiative) {

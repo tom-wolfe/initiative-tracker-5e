@@ -17,9 +17,20 @@
       </button>
     </mat-cell>
   </ng-container>
+  <ng-container matColumnDef="conditions">
+    <mat-header-cell *matHeaderCellDef>Conditions</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <span *ngFor="let condition of element.conditions">
+        <a [href]="conditionLink(condition)" target="_new">{{condition}}</a>&nbsp;
+      </span>
+    </mat-cell>
+  </ng-container>
   <ng-container matColumnDef="actions">
     <mat-header-cell *matHeaderCellDef></mat-header-cell>
     <mat-cell *matCellDef="let element" class="cell-actions">
+      <a mat-icon-button [href]="creatureLink(element)" target="_new">
+        <img src="/assets/ddb.png" width="24" height="24" />
+      </a>
       <button mat-icon-button color="primary" (click)="onRemoveClick(element)">
         <mat-icon>remove_circle</mat-icon>
       </button>

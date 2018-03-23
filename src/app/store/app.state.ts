@@ -1,5 +1,7 @@
 import { TrackerState } from '../initiative-tracker/store';
+import { SharedState } from '../shared/store';
 
 export interface AppState {
-    tracker: TrackerState;
+  shared: SharedState;
+  tracker: TrackerState;
 }

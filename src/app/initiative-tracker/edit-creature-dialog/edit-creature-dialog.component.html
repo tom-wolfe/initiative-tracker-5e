@@ -2,18 +2,18 @@
 <div mat-dialog-content>
   <div class="name-group">
     <mat-form-field>
-      <input matInput placeholder="Name" [(ngModel)]="creature.name" (keydown.enter)="onOKClick($event)">
+      <input matInput placeholder="Name" [(ngModel)]="creature.name" (keydown.enter)="onOKClick()">
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="text" placeholder="Initiative" [(ngModel)]="creature.initiative" (keydown.enter)="onOKClick($event)">
+      <input matInput type="text" placeholder="Initiative" [(ngModel)]="creature.initiative" (keydown.enter)="onOKClick()">
     </mat-form-field>
   </div>
   <mat-form-field>
-    <input matInput type="text" placeholder="Current HP" [(ngModel)]="creature.currentHp" (keydown.enter)="onOKClick($event)">
+    <input matInput type="text" placeholder="Current HP" [(ngModel)]="creature.currentHp" (keydown.enter)="onOKClick()">
   </mat-form-field>
   <span>/</span>
   <mat-form-field>
-    <input matInput type="text" placeholder="Maximum HP" [(ngModel)]="creature.maximumHp" (keydown.enter)="onOKClick($event)">
+    <input matInput type="text" placeholder="Maximum HP" [(ngModel)]="creature.maximumHp" (keydown.enter)="onOKClick()">
   </mat-form-field>
   <div>
     <h3>Conditions</h3>

@@ -15,7 +15,13 @@
   <mat-form-field>
     <input matInput type="text" placeholder="Maximum HP" [(ngModel)]="creature.maximumHp" (keydown.enter)="onOKClick($event)">
   </mat-form-field>
-  <app-condition-list [creature]="creature"></app-condition-list>
+  <div>
+    <h3>Conditions</h3>
+    <mat-chip-list [multiple]="true">
+      <mat-chip color="primary" [selected]="isSelected(condition)" (click)="toggleCondition(condition)" *ngFor="let condition of conditions">{{condition}}</mat-chip>
+    </mat-chip-list>
+  </div>
+  <br>
 </div>
 <div mat-dialog-actions>
   <button mat-raised-button color="secondary" (click)="onCancelClick()">Cancel</button>

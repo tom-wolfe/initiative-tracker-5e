@@ -4,6 +4,7 @@ import { CreatureInitiative } from '../models';
 import { AppState } from '../../store';
 import { Store } from '@ngrx/store';
 import { UpdateCreature } from '../store/encounter';
+import { Conditions } from '../models/conditions';
 
 @Component({
   selector: 'app-edit-creature-dialog',
@@ -12,13 +13,27 @@ import { UpdateCreature } from '../store/encounter';
 })
 export class EditCreatureDialogComponent {
   creature: CreatureInitiative;
+  conditions: string[] = Conditions;
 
   constructor(
     private dialog: MatDialogRef<EditCreatureDialogComponent>,
     private store: Store<AppState>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    this.creature = Object.assign({}, data.creature)
+    this.creature = Object.assign({}, data.creature, { conditions: data.creature.conditions.map(c => c) })
+  }
+
+  isSelected(condition: string): boolean {
+    return this.creature.conditions.includes(condition);
+  }
+
+  toggleCondition(condition: string) {
+    const index = this.creature.conditions.indexOf(condition);
+    if (index > -1) {
+      this.creature.conditions.splice(index, 1);
+    } else {
+      this.creature.conditions.push(condition);
+    }
   }
 
   onOKClick() {

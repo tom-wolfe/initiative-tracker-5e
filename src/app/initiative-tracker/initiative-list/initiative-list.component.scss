@@ -1,0 +1,35 @@
+.active {
+    background-color: #f0f0f0;
+}
+
+.hp {
+    display: flex;
+    flex-direction: column;
+    button {
+        flex-grow: 1;
+    }
+}
+
+.cell-actions {
+    text-align: right;
+}
+
+.is-active, .initiative {
+    flex: 0 0 100px;
+}
+
+.center {
+    text-align: center;
+}
+
+.name {
+    display: flex;
+    button {
+        flex-grow: 1;
+        text-align: left;
+    }
+}
+
+.mat-cell {
+    padding: 4px;
+}

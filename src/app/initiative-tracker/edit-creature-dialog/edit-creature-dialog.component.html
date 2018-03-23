@@ -1,0 +1,34 @@
+<h1 mat-dialog-title>{{creature.name}}&nbsp;</h1>
+<div mat-dialog-content>
+  <div class="full-width">
+    <mat-form-field>
+      <input matInput placeholder="Name" [(ngModel)]="creature.name" (keydown.enter)="onOKClick()">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Initiative" [(ngModel)]="creature.initiative" (keydown.enter)="onOKClick()">
+    </mat-form-field>
+    <div class="hp">
+      <mat-form-field>
+        <input matInput type="text" placeholder="Current HP" [(ngModel)]="creature.currentHp" (keydown.enter)="onOKClick()">
+      </mat-form-field>
+      <span>/</span>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Maximum HP" [(ngModel)]="creature.maximumHp" (keydown.enter)="onOKClick()">
+      </mat-form-field>
+    </div>
+    <mat-form-field>
+      <textarea matInput placeholder="Notes" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" [(ngModel)]="creature.notes"></textarea>
+    </mat-form-field>
+  </div>
+  <div>
+    <h3>Conditions</h3>
+    <mat-chip-list [multiple]="true">
+      <mat-chip color="primary" [selected]="isSelected(condition)" (click)="toggleCondition(condition)" *ngFor="let condition of conditions">{{condition}}</mat-chip>
+    </mat-chip-list>
+  </div>
+  <br>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="secondary" (click)="onCancelClick()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onOKClick()">OK</button>
+</div>

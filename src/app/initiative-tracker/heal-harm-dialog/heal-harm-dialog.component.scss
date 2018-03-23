@@ -1,0 +1,16 @@
+.input-form {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.number-button, .number-input {
+  font-size: 1.5rem;
+  font-weight: bold;
+  width: 20%;
+}
+
+.number-input {
+  padding: 8px;
+  box-sizing: border-box;
+}

@@ -59,6 +59,10 @@ export function encounterReducer(state: EncounterState = initialState, action: A
         }
       }
       newState.initiative = nextInitiative;
+
+      // Reset reactions.
+      newState.creatures = newState.creatures.map(c => c.initiative !== nextInitiative ? c : Object.assign({}, c, { reactionUsed: false }));
+
       return newState;
     }
     case Actions.PreviousInitiative.TYPE: {

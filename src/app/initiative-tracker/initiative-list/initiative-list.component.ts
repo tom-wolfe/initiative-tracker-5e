@@ -16,7 +16,7 @@ import { LinksService } from '../../shared/links.service';
   styleUrls: ['./initiative-list.component.scss']
 })
 export class InitiativeListComponent {
-  displayedColumns = ['active', 'name', 'initiative', 'hp', 'conditions', 'actions'];
+  displayedColumns = ['active', 'name', 'initiative', 'hp', 'reaction', 'conditions', 'actions'];
   creatures: Observable<CreatureInitiative[]>;
   initiative: number;
 
@@ -58,6 +58,10 @@ export class InitiativeListComponent {
   }
 
   onActiveToggle(e: MatSlideToggleChange, creature: CreatureInitiative) {
-    this.store.dispatch(new UpdateCreature(creature, { active: e.checked }))
+    this.store.dispatch(new UpdateCreature(creature, { active: e.checked }));
+  }
+
+  onReactionToggle(e: MatSlideToggleChange, creature: CreatureInitiative) {
+    this.store.dispatch(new UpdateCreature(creature, { reactionUsed: e.checked }));
   }
 }

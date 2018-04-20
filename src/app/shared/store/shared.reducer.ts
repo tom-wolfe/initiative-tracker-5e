@@ -1,5 +1,7 @@
 import { linksReducer } from './links';
+import { monstersReducer } from './monsters';
 
 export const reducers = {
-  links: linksReducer
+  links: linksReducer,
+  monsters: monstersReducer
 };

@@ -4,7 +4,11 @@
       #count>
   </mat-form-field>
   <mat-form-field>
-    <input matInput type="text" placeholder="Creature Name" [(ngModel)]="newCreature.name" (keydown.enter)="onAddToInitiativeClick($event)">
+    <input matInput type="text" placeholder="Creature Name" 
+      [(ngModel)]="newCreature.name"
+      (keydown.enter)="onAddToInitiativeClick($event)"
+      (focusout)="onNameFocusOut($event)"
+    >
   </mat-form-field>
   <mat-form-field>
     <input matInput type="text" placeholder="Initiative" [(ngModel)]="newCreature.initiative" (keydown.enter)="onAddToInitiativeClick($event)">

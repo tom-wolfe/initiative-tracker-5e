@@ -22,6 +22,7 @@ export class AddCreaturesComponent {
   onNameFocusOut(e): void {
     const name = e.target.value;
     const matches = this.creatures.filter(c => c.name.toUpperCase() === name.toUpperCase());
+    this.newCreature.existsOnDDB = matches.length > 0;
     if (matches.length > 0) {
       const dexMod = Math.floor((matches[0].abilities.dex - 10) / 2);
       this.newCreature.initiative = <any>`1d20 + ${dexMod}`;

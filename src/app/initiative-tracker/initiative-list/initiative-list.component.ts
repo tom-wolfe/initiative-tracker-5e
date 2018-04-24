@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
+import { MatDialog, MatSlideToggleChange } from '@angular/material';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
+import { LinksService } from '../../shared/links.service';
 import { AppState } from '../../store';
+import { EditCreatureDialogComponent } from '../edit-creature-dialog';
+import { HealHarmDialogComponent } from '../heal-harm-dialog';
 import { CreatureInitiative } from '../models/creature-initiative';
 import { creaturesInInitiativeOrder, RemoveCreature, UpdateCreature } from '../store/encounter';
-import { MatDialog, MatSlideToggleChange } from '@angular/material';
-import { HealHarmDialogComponent } from '../heal-harm-dialog';
-import { EditCreatureDialogComponent } from '../edit-creature-dialog';
-import { LinksService } from '../../shared/links.service';
 
 @Component({
   selector: 'app-initiative-list',
@@ -18,12 +18,14 @@ import { LinksService } from '../../shared/links.service';
 export class InitiativeListComponent {
   displayedColumns = ['active', 'name', 'initiative', 'hp', 'reaction', 'conditions', 'actions'];
   creatures: Observable<CreatureInitiative[]>;
+  allCreatures: any[]
   initiative: number;
 
   constructor(private store: Store<AppState>, private dialog: MatDialog, private links: LinksService) {
     const encounter = this.store.select(s => s.tracker.encounter);
     encounter.select(e => e.initiative).subscribe(i => this.initiative = i);
     this.creatures = encounter.select(creaturesInInitiativeOrder);
+    this.store.select(s => s.shared.monsters).subscribe(c => this.allCreatures = c);
   }
 
   conditionLink(condition: string): string {

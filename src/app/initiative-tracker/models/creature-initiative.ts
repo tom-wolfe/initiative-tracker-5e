@@ -6,6 +6,7 @@ export class CreatureInitiative {
     conditions: string[] = [];
     active = true;
     reactionUsed = false;
+    existsOnDDB = false;
     notes: string;
     constructor(values?: CreatureInitiative) {
         Object.assign(this, values);

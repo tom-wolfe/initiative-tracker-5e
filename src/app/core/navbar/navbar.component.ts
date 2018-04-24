@@ -1,4 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import { ToggleSidebar } from '../../shared/store/ui';
+import { AppState } from '../../store';
 
 @Component({
   selector: 'app-navbar',
@@ -6,4 +10,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
+
+  constructor(private store: Store<AppState>) { }
+
+  toggleSidebar() {
+    this.store.dispatch(new ToggleSidebar());
+  }
 }

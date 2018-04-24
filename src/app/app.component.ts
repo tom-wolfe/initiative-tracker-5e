@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import { AppState } from './store';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  private sidebarOpened: boolean;
 
+  public constructor(private store: Store<AppState>) {
+    store.select(s => s.shared.ui.sidebarOpen).subscribe(s => this.sidebarOpened = s);
+  }
 }

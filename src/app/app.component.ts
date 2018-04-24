@@ -9,7 +9,7 @@ import { AppState } from './store';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  private sidebarOpened: boolean;
+  sidebarOpened: boolean;
 
   public constructor(private store: Store<AppState>) {
     store.select(s => s.shared.ui.sidebarOpen).subscribe(s => this.sidebarOpened = s);

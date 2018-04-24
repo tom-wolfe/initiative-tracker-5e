@@ -16,7 +16,7 @@ export class InitiativeTrackerComponent {
 
   constructor(private store: Store<AppState>) {
     this.store.dispatch(new LoadMonsters());
-    
+
     const encounter = this.store.select(s => s.tracker.encounter);
     encounter.select(e => e.round).subscribe(r => this.round = r);
     encounter.select(e => e.initiative).subscribe(i => this.initiative = i);

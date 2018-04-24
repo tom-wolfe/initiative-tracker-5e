@@ -18,7 +18,7 @@ import { creaturesInInitiativeOrder, RemoveCreature, UpdateCreature } from '../s
 export class InitiativeListComponent {
   displayedColumns = ['active', 'name', 'initiative', 'hp', 'reaction', 'conditions', 'actions'];
   creatures: Observable<CreatureInitiative[]>;
-  allCreatures: any[]
+  allCreatures: any[];
   initiative: number;
 
   constructor(private store: Store<AppState>, private dialog: MatDialog, private links: LinksService) {

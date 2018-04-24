@@ -14,10 +14,9 @@ export class MonstersEffects {
   @Effect() loadMonsters = this.actions$
     .ofType<Monsters.LoadMonsters>(Monsters.LoadMonsters.TYPE)
     .flatMap((action) => {
-      let monsterData: Observable<any> = this.http
+      return this.http
         .get('assets/monsters.json', { responseType: 'json' })
         .map(data => new Monsters.SetMonsters(<any[]>data));
-      return monsterData;
     });
 
   constructor(private actions$: Actions<Action>, private http: HttpClient) { }

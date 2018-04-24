@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
+import { LoadMonsters } from '../shared/store/monsters';
 import { AppState } from '../store';
 import { CreatureInitiative } from './models/creature-initiative';
 
@@ -14,6 +15,8 @@ export class InitiativeTrackerComponent {
   round: number;
 
   constructor(private store: Store<AppState>) {
+    this.store.dispatch(new LoadMonsters());
+
     const encounter = this.store.select(s => s.tracker.encounter);
     encounter.select(e => e.round).subscribe(r => this.round = r);
     encounter.select(e => e.initiative).subscribe(i => this.initiative = i);

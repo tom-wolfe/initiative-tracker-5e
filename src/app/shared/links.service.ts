@@ -17,7 +17,7 @@ export class LinksService {
   }
 
   creature(name: string): string {
-    let formattedName = name.toLowerCase().replace(/\(.*\)/g, '').trim().replace(/\s+/g,'-');
+    const formattedName = name.toLowerCase().replace(/\(.*\)/g, '').trim().replace(/\s+/g, '-');
     return this.links.creatures.replace('{creature}', formattedName);
   }
 }

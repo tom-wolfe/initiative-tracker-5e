@@ -6,6 +6,7 @@ export class CreatureInitiative {
     conditions: string[] = [];
     active = true;
     reactionUsed = false;
+    concentrating = false;
     existsOnDDB = false;
     notes: string;
     constructor(values?: CreatureInitiative) {

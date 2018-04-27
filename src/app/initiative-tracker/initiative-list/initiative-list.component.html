@@ -33,6 +33,12 @@
         <mat-slide-toggle [checked]="element.reactionUsed" [color]="primary" (change)="onReactionToggle($event, element)"></mat-slide-toggle>
       </mat-cell>
     </ng-container>
+    <ng-container matColumnDef="concentrating">
+      <mat-header-cell *matHeaderCellDef class="is-active">Concentrating</mat-header-cell>
+      <mat-cell *matCellDef="let element" class="is-active">
+        <mat-slide-toggle [checked]="element.concentrating" [color]="primary" (change)="onConcentratingToggle($event, element)"></mat-slide-toggle>
+      </mat-cell>
+    </ng-container>
     <ng-container matColumnDef="conditions">
       <mat-header-cell *matHeaderCellDef>Conditions</mat-header-cell>
       <mat-cell *matCellDef="let element">

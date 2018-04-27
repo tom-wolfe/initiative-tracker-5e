@@ -16,7 +16,7 @@ import { creaturesInInitiativeOrder, RemoveCreature, UpdateCreature } from '../s
   styleUrls: ['./initiative-list.component.scss']
 })
 export class InitiativeListComponent {
-  displayedColumns = ['active', 'name', 'initiative', 'hp', 'reaction', 'conditions', 'actions'];
+  displayedColumns = ['active', 'name', 'initiative', 'hp', 'reaction', 'concentrating', 'conditions', 'actions'];
   creatures: Observable<CreatureInitiative[]>;
   allCreatures: any[];
   initiative: number;
@@ -65,5 +65,9 @@ export class InitiativeListComponent {
 
   onReactionToggle(e: MatSlideToggleChange, creature: CreatureInitiative) {
     this.store.dispatch(new UpdateCreature(creature, { reactionUsed: e.checked }));
+  }
+
+  onConcentratingToggle(e: MatSlideToggleChange, creature: CreatureInitiative) {
+    this.store.dispatch(new UpdateCreature(creature, { concentrating: e.checked }));
   }
 }

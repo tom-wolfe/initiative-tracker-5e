@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Concentration Check!</h1>
+<div mat-dialog-content>
+  <p>{{creature.name}} took damage while holding concentration. Make a Constitution saving throw!*</p>
+  <div class="dc">
+    DC {{dc}}
+  </div>
+  <small>
+    <em>* With advantage if they have the War Caster feat.</em>
+  </small>
+</div>
+<div mat-dialog-actions>
+  
+  <button mat-raised-button color="success" (click)="onPassClick()">Pass</button>
+  <button mat-raised-button color="danger" (click)="onFailClick()">Fail</button>
+</div>

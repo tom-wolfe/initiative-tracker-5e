@@ -5,6 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { SharedModule } from '../shared/shared.module';
 import { AddCreaturesComponent } from './add-creatures/add-creatures.component';
 import { ConcentrationDialogComponent } from './concentration-dialog';
+import { ConcentrationFailedDialogComponent } from './concentration-failed-dialog';
 import { EditCreatureDialogComponent } from './edit-creature-dialog';
 import { HealHarmDialogComponent } from './heal-harm-dialog';
 import { InitiativeHeaderComponent } from './initiative-header/initiative-header.component';
@@ -16,7 +17,8 @@ import { effects, reducers } from './store';
 const DIALOGS = [
   HealHarmDialogComponent,
   EditCreatureDialogComponent,
-  ConcentrationDialogComponent
+  ConcentrationDialogComponent,
+  ConcentrationFailedDialogComponent
 ];
 
 const COMPONENTS = [

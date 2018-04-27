@@ -1,9 +1,10 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { CreatureInitiative } from '../models';
-import { AppState } from '../../store';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
 import { Store } from '@ngrx/store';
-import { HealCreature, HarmCreature } from '../store/encounter';
+
+import { AppState } from '../../store';
+import { ConcentrationFailedDialogComponent } from '../concentration-failed-dialog';
+import { CreatureInitiative } from '../models';
 
 @Component({
   selector: 'app-concentration-dialog',
@@ -22,16 +23,18 @@ export class ConcentrationDialogComponent {
   constructor(
     private dialog: MatDialogRef<ConcentrationDialogComponent>,
     private store: Store<AppState>,
+    private matDialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
   onPassClick() {
-    // TODO: Pass the check.
+    // Passed the check, just close the dialog.
     this.dialog.close();
   }
 
   onFailClick() {
-    // TODO: Fail the check.
+    // Failed the check, switch off concentration.
+    this.matDialog.open(ConcentrationFailedDialogComponent, { width: '600px', data: { creature: this.creature } });
     this.dialog.close();
   }
 }

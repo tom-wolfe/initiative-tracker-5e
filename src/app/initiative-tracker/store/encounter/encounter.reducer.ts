@@ -31,6 +31,9 @@ export function creatureReducer(state: CreatureInitiative, action: Actions.Creat
     case Actions.UpdateCreature.TYPE: {
       const dice = new Dice();
       const creature = Object.assign({}, state, action.newCreature);
+      if (action.newCreature.concentrating !== undefined) {
+        creature.concentrating = action.newCreature.concentrating;
+      }
       creature.maximumHp = dice.roll((creature.maximumHp || '10').toString()).total;
       creature.currentHp = dice.roll((creature.currentHp || creature.maximumHp).toString()).total;
       creature.initiative = dice.roll((creature.initiative || '1d20').toString()).total;

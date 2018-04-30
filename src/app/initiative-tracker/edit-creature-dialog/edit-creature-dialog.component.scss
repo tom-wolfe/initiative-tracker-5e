@@ -12,3 +12,8 @@
     
   }
 }
+
+mat-chip[disabled=true] {
+  color: #999 !important;
+  font-style: italic;
+}

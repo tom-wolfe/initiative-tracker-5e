@@ -23,7 +23,7 @@
   <div>
     <h3>Conditions</h3>
     <mat-chip-list [multiple]="true">
-      <mat-chip color="primary" [selected]="isSelected(condition)" (click)="toggleCondition(condition)" *ngFor="let condition of conditions">{{condition}}</mat-chip>
+      <mat-chip color="primary" [selected]="isSelected(condition)" [disabled]="isImmune(condition)" (click)="toggleCondition(condition)" *ngFor="let condition of conditions">{{condition}}</mat-chip>
     </mat-chip-list>
   </div>
   <br>

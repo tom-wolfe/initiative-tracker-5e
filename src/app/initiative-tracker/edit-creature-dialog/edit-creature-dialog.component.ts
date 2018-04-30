@@ -27,7 +27,14 @@ export class EditCreatureDialogComponent {
     return this.creature.conditions.includes(condition);
   }
 
+  isImmune(condition: string): boolean {
+    const res = this.creature.statBlock && this.creature.statBlock.condition.immunities.includes(condition.toLowerCase());
+    console.log(condition, res);
+    return res;
+  }
+
   toggleCondition(condition: string) {
+    if (this.isImmune(condition)) { return; }
     const index = this.creature.conditions.indexOf(condition);
     if (index > -1) {
       this.creature.conditions.splice(index, 1);

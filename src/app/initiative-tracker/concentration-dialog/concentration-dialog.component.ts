@@ -20,6 +20,16 @@ export class ConcentrationDialogComponent {
     return Math.max(10, Math.floor(this.data.amount / 2));
   }
 
+  get conSave(): string {
+    const sb = this.creature.statBlock;
+    if (sb.saves && sb.saves.con) {
+      return `${sb.saves.con >= 0 ? '+' : ''}${sb.saves.con}`;
+    } else {
+      const conMod = Math.floor((sb.abilities.con - 10) / 2);
+      return `${conMod >= 0 ? '+' : ''}${conMod}`;
+    }
+  }
+
   constructor(
     private dialog: MatDialogRef<ConcentrationDialogComponent>,
     private store: Store<AppState>,

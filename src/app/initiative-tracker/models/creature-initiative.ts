@@ -9,6 +9,7 @@ export class CreatureInitiative {
     reactionUsed = false;
     concentrating = false;
     existsOnDDB = false;
+    statBlock: any;
     notes: string;
     constructor(values?: CreatureInitiative) {
         Object.assign(this, values);

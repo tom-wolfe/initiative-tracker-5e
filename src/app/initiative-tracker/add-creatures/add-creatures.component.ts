@@ -24,6 +24,8 @@ export class AddCreaturesComponent {
     const matches = this.creatures.filter(c => c.name.toUpperCase() === name.toUpperCase());
     this.newCreature.existsOnDDB = matches.length > 0;
     if (matches.length > 0) {
+      this.newCreature.name = matches[0].name;
+      this.newCreature.statBlock = matches[0];
       const dexMod = Math.floor((matches[0].abilities.dex - 10) / 2);
       this.newCreature.initiative = <any>`1d20 + ${dexMod}`;
       this.newCreature.maximumHp = matches[0].hp.formula;

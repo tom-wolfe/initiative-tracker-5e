@@ -13,7 +13,6 @@ export const initialState: EncounterState = {
 };
 
 export function creatureReducer(state: CreatureInitiative, action: Actions.CreatureAction): CreatureInitiative {
-  console.log('creature update!');
   switch (action.type) {
     case Actions.RemoveCreature.TYPE: {
       return null;

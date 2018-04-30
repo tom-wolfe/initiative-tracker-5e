@@ -2,7 +2,7 @@
 <div mat-dialog-content>
   <p>{{creature.name}} took damage while holding concentration. Make a Constitution saving throw!*</p>
   <div class="dc">
-    DC {{dc}}
+    DC {{dc}}<span *ngIf="creature.statBlock"> ({{conSave}})</span>
   </div>
   <small>
     <em>* With advantage if they have the War Caster feat.</em>

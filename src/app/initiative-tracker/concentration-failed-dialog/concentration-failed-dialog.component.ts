@@ -22,7 +22,7 @@ export class ConcentrationFailedDialogComponent {
   ) { }
 
   onOKClick() {
-    this.store.dispatch(new UpdateCreature(this.creature, { concentrating: false }));
+    this.store.dispatch(new UpdateCreature(this.creature.id, { concentrating: false }));
     this.dialog.close();
   }
 }

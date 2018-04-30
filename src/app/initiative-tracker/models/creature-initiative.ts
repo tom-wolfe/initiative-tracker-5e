@@ -1,4 +1,5 @@
 export class CreatureInitiative {
+    id: number;
     name: string = null;
     maximumHp: number;
     currentHp: number;

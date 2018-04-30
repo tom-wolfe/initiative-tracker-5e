@@ -6,12 +6,14 @@ import { creaturesInInitiativeOrder } from './encounter.selectors';
 import { EncounterState } from './encounter.state';
 
 export const initialState: EncounterState = {
+  lastId: 0,
   creatures: [],
   round: 0,
   initiative: undefined
 };
 
 export function creatureReducer(state: CreatureInitiative, action: Actions.CreatureAction): CreatureInitiative {
+  console.log('creature update!');
   switch (action.type) {
     case Actions.RemoveCreature.TYPE: {
       return null;
@@ -77,9 +79,11 @@ export function encounterReducer(state: EncounterState = initialState, action: A
     }
     case Actions.AddCreatures.TYPE: {
       const dice = new Dice();
+      let lastId = state.lastId;
       const newCreatures: CreatureInitiative[] = [];
       for (let x = 1; x <= action.quantity; x++) {
         const creature = new CreatureInitiative(action.creature);
+        creature.id = ++lastId;
         if (action.quantity > 1) {
           creature.name += ` (#${x})`;
         }
@@ -88,15 +92,16 @@ export function encounterReducer(state: EncounterState = initialState, action: A
         creature.initiative = dice.roll(action.creature.initiative || '1d20').total;
         newCreatures.push(creature);
       }
+      lastId++;
       const creatures = [...state.creatures, ...newCreatures];
-      return Object.assign({}, state, { creatures });
+      return Object.assign({}, state, { creatures, lastId });
     }
     case Actions.RemoveCreature.TYPE:
     case Actions.UpdateCreature.TYPE:
     case Actions.HealCreature.TYPE:
     case Actions.HarmCreature.TYPE: {
       const creatures = state.creatures
-        .map(c => c === action.creature ? creatureReducer(c, action) : c)
+        .map(c => c.id === action.creatureId ? creatureReducer(c, action) : c)
         .filter(c => c);
       return Object.assign({}, state, { creatures });
     }

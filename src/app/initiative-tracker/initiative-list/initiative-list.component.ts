@@ -45,7 +45,7 @@ export class InitiativeListComponent {
   }
 
   onRemoveClick(creature: CreatureInitiative) {
-    this.store.dispatch(new RemoveCreature(creature));
+    this.store.dispatch(new RemoveCreature(creature.id));
   }
 
   onHealHarmClick(creature: CreatureInitiative) {
@@ -60,14 +60,14 @@ export class InitiativeListComponent {
   }
 
   onActiveToggle(e: MatSlideToggleChange, creature: CreatureInitiative) {
-    this.store.dispatch(new UpdateCreature(creature, { active: e.checked }));
+    this.store.dispatch(new UpdateCreature(creature.id, { active: e.checked }));
   }
 
   onReactionToggle(e: MatSlideToggleChange, creature: CreatureInitiative) {
-    this.store.dispatch(new UpdateCreature(creature, { reactionUsed: e.checked }));
+    this.store.dispatch(new UpdateCreature(creature.id, { reactionUsed: e.checked }));
   }
 
   onConcentratingToggle(e: MatSlideToggleChange, creature: CreatureInitiative) {
-    this.store.dispatch(new UpdateCreature(creature, { concentrating: e.checked }));
+    this.store.dispatch(new UpdateCreature(creature.id, { concentrating: e.checked }));
   }
 }

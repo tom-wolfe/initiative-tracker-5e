@@ -37,7 +37,7 @@ export class EditCreatureDialogComponent {
   }
 
   onOKClick() {
-    this.store.dispatch(new UpdateCreature(this.data.creature, this.creature));
+    this.store.dispatch(new UpdateCreature(this.data.creature.id, this.creature));
     this.dialog.close();
   }
 

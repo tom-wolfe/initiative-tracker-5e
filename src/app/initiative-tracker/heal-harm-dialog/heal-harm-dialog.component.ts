@@ -23,7 +23,7 @@ export class HealHarmDialogComponent {
   ) { }
 
   onHealClick() {
-    this.store.dispatch(new HealCreature(this.creature, this.amount));
+    this.store.dispatch(new HealCreature(this.creature.id, this.amount));
     this.dialog.close();
   }
 
@@ -32,7 +32,7 @@ export class HealHarmDialogComponent {
   }
 
   onHarmClick() {
-    this.store.dispatch(new HarmCreature(this.creature, this.amount));
+    this.store.dispatch(new HarmCreature(this.creature.id, this.amount));
     this.dialog.close();
   }
 

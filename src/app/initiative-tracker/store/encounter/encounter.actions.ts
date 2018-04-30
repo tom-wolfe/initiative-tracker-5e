@@ -19,40 +19,45 @@ export class ResetInitiative implements Action {
     constructor() { }
 }
 
-export class RemoveCreature implements Action {
-    public static readonly TYPE = '[Encounter] Remove Creature';
-    readonly type = RemoveCreature.TYPE;
-    constructor(public creature: CreatureInitiative) { }
-}
-
 export class AddCreatures implements Action {
     public static readonly TYPE = '[Encounter] Add Creatures';
     readonly type = AddCreatures.TYPE;
     constructor(public creature: CreatureInitiative, public quantity: number, public initiative: string) { }
 }
 
-export class HealCreature implements Action {
+export abstract class CreatureActionBase implements Action {
+    abstract readonly type: string;
+    constructor(public creatureId: number) { }
+}
+
+export class RemoveCreature extends CreatureActionBase {
+    public static readonly TYPE = '[Encounter] Remove Creature';
+    readonly type = RemoveCreature.TYPE;
+    constructor(public creatureId: number) { super(creatureId); }
+}
+
+export class HealCreature extends CreatureActionBase {
     public static readonly TYPE = '[Encounter] Heal Creature';
     readonly type = HealCreature.TYPE;
-    constructor(public creature: CreatureInitiative, public amount: number) { }
+    constructor(creatureId: number, public amount: number) { super(creatureId); }
 }
 
-export class HarmCreature implements Action {
+export class HarmCreature extends CreatureActionBase {
     public static readonly TYPE = '[Encounter] Harm Creature';
     readonly type = HarmCreature.TYPE;
-    constructor(public creature: CreatureInitiative, public amount: number) { }
+    constructor(creatureId: number, public amount: number) { super(creatureId); }
 }
 
-export class UpdateCreature implements Action {
+export class UpdateCreature extends CreatureActionBase {
     public static readonly TYPE = '[Encounter] Update Creature';
     readonly type = UpdateCreature.TYPE;
-    constructor(public creature: CreatureInitiative, public newCreature: Partial<CreatureInitiative>) { }
+    constructor(public creatureId: number, public newCreature: Partial<CreatureInitiative>) { super(creatureId); }
 }
 
-export class ConcentrationCheck implements Action {
+export class ConcentrationCheck extends CreatureActionBase {
     public static readonly TYPE = '[Encounter] Concentration Check';
     readonly type = ConcentrationCheck.TYPE;
-    constructor(public creature: CreatureInitiative, public damage: number) { }
+    constructor(public creatureId: number, public damage: number) { super(creatureId); }
 }
 
 export type CreatureAction = HealCreature | HarmCreature | UpdateCreature | RemoveCreature | ConcentrationCheck;

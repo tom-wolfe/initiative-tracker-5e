@@ -1,11 +1,13 @@
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/withLatestFrom';
 
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Actions, Effect } from '@ngrx/effects';
-import { Action } from '@ngrx/store';
+import { Action, Store } from '@ngrx/store';
 
+import { AppState } from '../../../store';
 import { ConcentrationDialogComponent } from '../../concentration-dialog';
 import { ConcentrationFailedDialogComponent } from '../../concentration-failed-dialog';
 import * as Encounter from './encounter.actions';
@@ -14,11 +16,12 @@ import * as Encounter from './encounter.actions';
 export class EncounterEffects {
   @Effect() concentrationChecks = this.actions$
     .ofType<Encounter.HarmCreature>(Encounter.HarmCreature.TYPE)
-    .flatMap((action) => {
-      if (action.creature.concentrating) {
-        const [creature, amount] = [action.creature, action.amount];
-        if (action.creature.currentHp > action.amount) {
-          this.dialog.open(ConcentrationDialogComponent, { width: '600px', data: { creature, amount } });
+    .withLatestFrom(this.store.select(s => s.tracker.encounter.creatures))
+    .flatMap(([action, creatures]) => {
+      const creature = creatures.filter(c => c.id === action.creatureId)[0];
+      if (creature && creature.concentrating) {
+        if (creature.currentHp > 0) {
+          this.dialog.open(ConcentrationDialogComponent, { width: '600px', data: { creature, amount: action.amount } });
         } else {
           this.dialog.open(ConcentrationFailedDialogComponent, { width: '600px', data: { creature } });
         }
@@ -26,5 +29,5 @@ export class EncounterEffects {
       return [];
     });
 
-  constructor(private actions$: Actions<Action>, private dialog: MatDialog) { }
+  constructor(private actions$: Actions<Action>, private dialog: MatDialog, private store: Store<AppState>) { }
 }

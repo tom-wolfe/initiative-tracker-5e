@@ -1,6 +1,6 @@
 # Initiative Tracker
 
-[See it Running Here!](http://trwolfe13.github.io/initiative)
+[See it Running Here!](http://twolfe.co.uk/initiative)
 
 This project is meant to be a lightweight tool for handling combat initiative in 5th edition D&D.
 

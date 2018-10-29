@@ -28,9 +28,10 @@ export class EditCreatureDialogComponent {
   }
 
   isImmune(condition: string): boolean {
-    const res = this.creature.statBlock && this.creature.statBlock.condition.immunities.includes(condition.toLowerCase());
-    console.log(condition, res);
-    return res;
+    return this.creature.statBlock
+      && this.creature.statBlock.condition
+      && this.creature.statBlock.condition.immunities
+      && this.creature.statBlock.condition.immunities.includes(condition.toLowerCase());
   }
 
   toggleCondition(condition: string) {

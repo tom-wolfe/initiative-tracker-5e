@@ -2,7 +2,7 @@ import { Dice } from 'dice-typescript';
 
 import { CreatureInitiative } from '../../models';
 import * as Actions from './encounter.actions';
-import { creaturesInInitiativeOrder } from './encounter.selectors';
+import { creaturesInInitiativeOrder, matchingCreatures } from './encounter.selectors';
 import { EncounterState } from './encounter.state';
 
 export const initialState: EncounterState = {
@@ -109,7 +109,8 @@ export function encounterReducer(state: EncounterState = initialState, action: A
       creature.id = ++lastId;
       creature.currentHp = creature.maximumHp;
 
-      // TODO: Append Count. creature.name += ` (#${x})`;
+      const num = matchingCreatures(creature.name)(state);
+      if (num > 0) { creature.name += ` (#${(num + 1).toString()})`; }
 
       lastId++;
       const creatures = [...state.creatures, creature];

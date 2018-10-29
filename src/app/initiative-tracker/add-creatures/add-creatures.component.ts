@@ -38,12 +38,12 @@ export class AddCreaturesComponent {
 
   onAddToInitiativeClick(e): void {
     const action = new AddCreatures(this.count, this.name, this.initiative, this.hp);
-    console.log(action);
-    this.store.dispatch(action);
     this.count = '1';
     this.name = '';
     this.initiative = '';
     this.hp = '';
+    
+    this.store.dispatch(action);
     this.countInput.nativeElement.focus();
     if (e) { e.preventDefault(); }
   }

@@ -1,6 +1,6 @@
 {
   "name": "initiative-tracker-5e",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "5th Edition Initiative Tracker",
   "scripts": {
     "ng": "ng",

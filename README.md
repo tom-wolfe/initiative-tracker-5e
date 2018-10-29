@@ -1,10 +1,17 @@
 # Initiative Tracker
 
-[See it Running Here!](http://twolfe.co.uk/initiative)
+[See it Running Here!](http://initiative.twolfe.co.uk)
 
 This project is meant to be a lightweight tool for handling combat initiative in 5th edition D&D.
 
+You can create quick hyperlinks to encounter templates using the following:
+
+[https://initiative.twolfe.co.uk?creature=bugbear&creature=goblin,3,1d20+8,16](https://initiative.twolfe.co.uk?creature=bugbear&creature=goblin,3,1d20+8,16)
+
+The `creature` query parameter format is: `[name],[qty],[initiative],[hp]`. Only the name is mandatory.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
+
 
 ## Development server
 

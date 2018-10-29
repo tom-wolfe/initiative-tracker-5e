@@ -2,7 +2,7 @@ import { Dice } from 'dice-typescript';
 
 import { CreatureInitiative } from '../../models';
 import * as Actions from './encounter.actions';
-import { creaturesInInitiativeOrder } from './encounter.selectors';
+import { creaturesInInitiativeOrder, matchingCreatures } from './encounter.selectors';
 import { EncounterState } from './encounter.state';
 
 export const initialState: EncounterState = {
@@ -102,23 +102,18 @@ export function encounterReducer(state: EncounterState = initialState, action: A
     case Actions.ResetInitiative.TYPE: {
       return initialState;
     }
-    case Actions.AddCreatures.TYPE: {
-      const dice = new Dice();
+    case Actions.AddCreature.TYPE: {
       let lastId = state.lastId;
-      const newCreatures: CreatureInitiative[] = [];
-      for (let x = 1; x <= action.quantity; x++) {
-        const creature = new CreatureInitiative(action.creature);
-        creature.id = ++lastId;
-        if (action.quantity > 1) {
-          creature.name += ` (#${x})`;
-        }
-        creature.maximumHp = dice.roll(action.creature.maximumHp || '10').total;
-        creature.currentHp = creature.maximumHp;
-        creature.initiative = dice.roll(action.creature.initiative || '1d20').total;
-        newCreatures.push(creature);
-      }
+
+      const creature = new CreatureInitiative(action.creature);
+      creature.id = ++lastId;
+      creature.currentHp = creature.maximumHp;
+
+      const num = matchingCreatures(creature.name)(state);
+      if (num > 0) { creature.name += ` (#${(num + 1).toString()})`; }
+
       lastId++;
-      const creatures = [...state.creatures, ...newCreatures];
+      const creatures = [...state.creatures, creature];
       return Object.assign({}, state, { creatures, lastId });
     }
     case Actions.RemoveCreature.TYPE:

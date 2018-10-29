@@ -70,8 +70,34 @@ export function encounterReducer(state: EncounterState = initialState, action: A
       return newState;
     }
     case Actions.PreviousInitiative.TYPE: {
-      // TODO: Implement previous initiative.
-      return state;
+      const sortedCreatures = creaturesInInitiativeOrder(state).filter(c => c.active);
+
+      // If we're at the beginning of the battle, don't allow any regression.
+      if ((!state.round || state.round === 1) && sortedCreatures.length > 0 && state.initiative === sortedCreatures[0].initiative) {
+        return state;
+      }
+
+      const newState = Object.assign({}, state);
+      if (!sortedCreatures.length) {
+        // If there are no creatures, just go back a round.
+        newState.round = Math.max(0, (newState.initiative || 0) - 1);
+        newState.initiative = 0;
+      } else {
+        let lastInitiative = sortedCreatures.length > 0 ? sortedCreatures[sortedCreatures.length - 1].initiative : 0;
+        if (state.initiative === undefined) {
+          newState.round = 1;
+        } else {
+          const prevCreatures = sortedCreatures.filter(c => c.initiative > newState.initiative);
+          if (prevCreatures.length > 0) {
+            lastInitiative = prevCreatures[prevCreatures.length - 1].initiative;
+          } else {
+            newState.round--;
+          }
+        }
+        newState.initiative = lastInitiative;
+      }
+
+      return newState;
     }
     case Actions.ResetInitiative.TYPE: {
       return initialState;

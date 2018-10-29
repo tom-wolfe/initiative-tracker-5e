@@ -42,9 +42,7 @@
     <ng-container matColumnDef="conditions">
       <mat-header-cell *matHeaderCellDef>Conditions</mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <span *ngFor="let condition of element.conditions">
-          <a [href]="conditionLink(condition)" target="_new">{{condition}}</a>&nbsp;
-        </span>
+        <mat-chip color="secondary" *ngFor="let condition of element.conditions">{{condition}}</mat-chip>
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="actions">

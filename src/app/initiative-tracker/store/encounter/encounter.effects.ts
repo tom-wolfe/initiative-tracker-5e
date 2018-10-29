@@ -40,7 +40,7 @@ export class EncounterEffects {
       const newCreatures: Encounter.AddCreature[] = [];
       const dice = new Dice();
 
-      const count = dice.roll(action.count).total;
+      const count = dice.roll(action.count || '1').total;
       const monster = monsters.find(f => f.name.toUpperCase() === action.name.toUpperCase());
       for (let x = 0; x < count; x++) {
         const creature: CreatureInitiative = new CreatureInitiative();

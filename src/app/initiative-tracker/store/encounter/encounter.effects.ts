@@ -45,12 +45,14 @@ export class EncounterEffects {
       for (let x = 0; x < count; x++) {
         const creature: CreatureInitiative = new CreatureInitiative();
         creature.name = action.name;
+        creature.initiative = dice.roll(action.initiative || '1d20').total;
+        creature.maximumHp = 10;
         creature.statBlock = monster;
         creature.existsOnDDB = !!monster;
 
         if (monster) {
           creature.name = monster.name;
-          const dexMod = Math.floor((monster.abilities.dex - 10) / 2);
+          const dexMod = Math.floor((monster.abilities.dexterity - 10) / 2);
           creature.initiative = dice.roll(action.initiative || `1d20 + ${dexMod}`).total;
           creature.maximumHp = dice.roll(action.hp || monster.hp.formula).total;
         }

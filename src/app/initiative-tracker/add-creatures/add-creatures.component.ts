@@ -26,7 +26,7 @@ export class AddCreaturesComponent {
     const monster = this.monsters.find(c => c.name.toUpperCase() === name.toUpperCase());
     if (monster) {
       this.name = monster.name;
-      const dexMod = Math.floor((monster.abilities.dex - 10) / 2);
+      const dexMod = Math.floor((monster.abilities.dexterity - 10) / 2);
       if (dexMod >= 0) {
         this.initiative = `1d20 + ${dexMod}`;
       } else {

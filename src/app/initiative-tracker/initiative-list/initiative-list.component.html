@@ -48,7 +48,7 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let element" class="cell-actions">
-        <a mat-mini-fab [href]="creatureLink(element)" target="_new" color="black" *ngIf="element.existsOnDDB">
+        <a mat-mini-fab [href]="element.statBlock.source" target="_new" color="black" *ngIf="element.existsOnDDB">
           <img src="/assets/ddb.png" width="12" height="12" />
         </a>
         <button mat-mini-fab color="primary" (click)="onRemoveClick(element)">

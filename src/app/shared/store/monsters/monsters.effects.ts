@@ -25,7 +25,7 @@ export class MonstersEffects {
     .ofType<Monsters.LoadMonsters>(Monsters.LoadMonsters.TYPE)
     .flatMap(() => {
       return this.http
-        .get('assets/monsters.json', { responseType: 'json' })
+        .get('https://twolfe.co.uk/dnd/data/monsters.json', { responseType: 'json' })
         .map(data => new Monsters.SetMonsters(<any[]>data));
     });
 

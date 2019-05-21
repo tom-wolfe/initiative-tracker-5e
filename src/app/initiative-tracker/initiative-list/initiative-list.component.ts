@@ -32,10 +32,6 @@ export class InitiativeListComponent {
     return this.links.condition(condition);
   }
 
-  creatureLink(creature: CreatureInitiative): string {
-    return this.links.creature(creature.name);
-  }
-
   isActive(creature: CreatureInitiative) {
     return this.initiative === creature.initiative && creature.active;
   }
